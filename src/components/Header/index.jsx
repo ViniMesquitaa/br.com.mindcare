@@ -16,12 +16,19 @@ export const Header = () => {
   const showHeader = pathname !== "/login" && pathname !== "/register";
   const [activePage, setActivePage] = useState("/home");
 
-  const navigationItems = [
-    { icon: <Admin />, label: "Admin", href: "/admin" },
+  const sidebarItems = [
+    { icon: <Admin />, label: "Administradores", href: "/admin" },
     { icon: <Professional />, label: "Profissionais", href: "/professional" },
     { icon: <Home />, label: "Home", href: "/home" },
     { icon: <Patient />, label: "Pacientes", href: "/patient" },
     { icon: <Profile />, label: "Perfil", href: "/profile" },
+  ];
+
+  const menuItems = [
+    { icon: <Home />, label: "Home", href: "/home" },
+    { icon: <Admin />, label: "Administradores", href: "/admin" },
+    { icon: <Professional />, label: "Profissionais", href: "/professional" },
+    { icon: <Patient />, label: "Pacientes", href: "/patient" },
   ];
 
   return (
@@ -30,14 +37,14 @@ export const Header = () => {
         <img src="/Logo.png" alt="Logo" />
       </a>
       <nav className="menu">
-        {navigationItems.map(({ label, href }) => (
+        {menuItems.map(({ label, href }) => (
           <a key={href} href={href} className="menu-item">
             {label}
           </a>
         ))}
       </nav>
       <nav className="icon-container">
-        {navigationItems.map(({ href, icon }) => (
+        {sidebarItems.map(({ href, icon }) => (
           <a key={href} href={href}>
             <div className="icon" onClick={() => setActivePage(href)}>
               {icon}
