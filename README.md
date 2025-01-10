@@ -1,8 +1,58 @@
-# React + Vite
+# 🧠 MindCare
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-Currently, two official plugins are available:
+**MindCare** é um aplicativo projetado para facilitar a conexão entre pacientes e profissionais de saúde mental. Ele oferece funcionalidades como cadastro, login, gerenciamento de perfis e administração do sistema.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- **[Vite](https://vitejs.dev/):** Ferramenta rápida para desenvolvimento e build de aplicações frontend.
+- **[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript):** Linguagem de programação para criar funcionalidades dinâmicas.
+- **[SWC](https://swc.rs/):** Compilador extremamente rápido para transpilação e otimização do código.
+- **CSS:** Utilizado para estilização da interface.
+
+---
+
+## 📦 Instalação
+
+### Pré-requisitos
+
+Certifique-se de ter:
+
+- **Node.js** (v16 ou superior) instalado.
+- Um gerenciador de pacotes: **npm**, **yarn** ou **pnpm**.
+
+### Passos para Instalação
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/ViniMesquitaa/br.com.mindcare
+   ```
+
+2. Acesse o diretório do projeto:
+
+   ```bash
+   cd br.com.mindcare
+   ```
+
+3. Instale as dependências:
+
+   ```bash
+   yarn #ou
+   npm i #ou
+   pnpm install
+   ```
+
+4. Inicie o servidor de desenvolvimento:
+
+   ```bash
+   yarn dev #ou
+   npm run dev #ou
+   pnpm dev
+   ```
