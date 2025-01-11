@@ -10,10 +10,6 @@
   background-color: #f8f7f2;
 }
 
-.header-container .hidden {
-  display: none;
-}
-
 .menu {
   display: flex;
   gap: 2.5rem;
@@ -102,6 +98,7 @@
     position: absolute;
     padding: 0.625rem 1rem;
     justify-content: center;
+    box-shadow: 0rem -0.125rem 0.5rem rgba(123, 130, 129, 0.4);
   }
 
   .icon-container {
@@ -122,11 +119,11 @@
   }
   .active-line {
     content: "";
-    width: 200%;
-    height: 0.2rem;
+    width: 180%;
+    height: 0.3rem;
     background-color: #687dac;
     position: absolute;
-    bottom: -0.6rem;
+    bottom: -0.9rem;
     transition: width 0.3s ease;
   }
 }
