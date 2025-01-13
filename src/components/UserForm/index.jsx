@@ -1,4 +1,4 @@
-import { CircleUserRound } from "lucide-react";
+import { CircleUserRound, Eye, EyeClosed } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { userTypes } from "../../utils/constants";
 import { generateRandomPassword } from "../../utils/generateRandomPassword";
@@ -20,6 +20,11 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
 
   const [photoPreview, setPhotoPreview] = useState(null);
   const [errors, setErrors] = useState({});
+  const [showPasswords, setShowPasswords] = useState({
+    showPassword: false,
+    showConfirmPassword: false,
+  });
+
   const userTypeOptions = useMemo(
     () => (isAdminRegister ? userTypes.admin : userTypes.common),
     [isAdminRegister]
@@ -73,6 +78,13 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
       setFormValues((prev) => ({ ...prev, photo: file }));
       setPhotoPreview(URL.createObjectURL(file));
     }
+  };
+
+  const togglePasswordVisibility = (field) => {
+    setShowPasswords((prev) => ({
+      ...prev,
+      [field]: !prev[field],
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -143,7 +155,6 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
           <small className="error-message">{errors.fullName}</small>
         )}
       </div>
-
       <div className="input-group">
         <label htmlFor="email">
           E-mail <small>*</small>
@@ -161,7 +172,6 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
           <small className="error-message">{errors.email}</small>
         )}
       </div>
-
       <div className="input-group">
         <label htmlFor="address">
           Endereço <small>*</small>
@@ -179,7 +189,6 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
           <small className="error-message">{errors.address}</small>
         )}
       </div>
-
       <div className="wrapper">
         <div className="input-group">
           <label htmlFor="phone">
@@ -222,21 +231,33 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
           )}
         </div>
       </div>
-
       <div className="input-group">
         <label htmlFor="password">
           Senha <small>*</small>
         </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          onFocus={handleFocus}
-          value={formValues.password}
-          onChange={handleInputChange}
-          disabled={isAdminRegister}
-          className={`input-field ${errors.password ? "error" : ""}`}
-        />
+        <div className="password-container">
+          <input
+            type={showPasswords.showPassword ? "text" : "password"}
+            id="password"
+            name="password"
+            onFocus={handleFocus}
+            disabled={isAdminRegister}
+            value={formValues.password}
+            onChange={handleInputChange}
+            className={`input-field ${errors.password ? "error" : ""}`}
+          />
+          <button
+            type="button"
+            onClick={() => togglePasswordVisibility("showPassword")}
+            className="toggle-button"
+          >
+            {showPasswords.showPassword ? (
+              <Eye className="toggle-icon" />
+            ) : (
+              <EyeClosed className="toggle-icon" />
+            )}
+          </button>
+        </div>
         {errors.password && (
           <small className="error-message">{errors.password}</small>
         )}
@@ -246,16 +267,29 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
         <label htmlFor="confirmPassword">
           Confirmação de senha <small>*</small>
         </label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          onFocus={handleFocus}
-          value={formValues.confirmPassword}
-          onChange={handleInputChange}
-          disabled={isAdminRegister}
-          className={`input-field ${errors.confirmPassword ? "error" : ""}`}
-        />
+        <div className="password-container">
+          <input
+            type={showPasswords.showConfirmPassword ? "text" : "password"}
+            id="confirmPassword"
+            name="confirmPassword"
+            onFocus={handleFocus}
+            value={formValues.confirmPassword}
+            onChange={handleInputChange}
+            disabled={isAdminRegister}
+            className={`input-field ${errors.confirmPassword ? "error" : ""}`}
+          />
+          <button
+            type="button"
+            onClick={() => togglePasswordVisibility("showConfirmPassword")}
+            className="toggle-button"
+          >
+            {showPasswords.showConfirmPassword ? (
+              <Eye className="toggle-icon" />
+            ) : (
+              <EyeClosed className="toggle-icon" />
+            )}
+          </button>
+        </div>
         {errors.confirmPassword && (
           <small className="error-message">{errors.confirmPassword}</small>
         )}
