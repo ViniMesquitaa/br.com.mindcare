@@ -1,6 +1,7 @@
 import { Route, Routes, useLocation } from "react-router";
 import "./app.css";
 import Home from "./pages/Home";
+import { RegisterAdmin } from "./pages/RegisterAdmin";
 import { Header } from "./components/Header";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       {showHeader && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/admins/register" element={<RegisterAdmin />} />
       </Routes>
     </>
   );
