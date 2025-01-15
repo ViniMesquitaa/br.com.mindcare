@@ -1,39 +1,51 @@
-import { useState } from "react";
-import { useLocation } from "react-router";
 import {
-  Admin,
-  Home,
-  Logout,
-  Patient,
-  Professional,
-  Profile,
-} from "../../assets/icons/";
+  Brain,
+  CircleUserRound,
+  House,
+  LogOut,
+  Stethoscope,
+  UserRoundCog,
+} from "lucide-react";
+import { useState } from "react";
 import "./styles.css";
 
 export const Header = () => {
-  const location = useLocation();
-  const pathname = location.pathname;
-  const showHeader = pathname !== "/login" && pathname !== "/register";
-  const [activePage, setActivePage] = useState("/home");
+  const [activePage, setActivePage] = useState("/");
 
   const sidebarItems = [
-    { icon: <Admin />, label: "Administradores", href: "/admin" },
-    { icon: <Professional />, label: "Profissionais", href: "/professional" },
-    { icon: <Home />, label: "Home", href: "/home" },
-    { icon: <Patient />, label: "Pacientes", href: "/patient" },
-    { icon: <Profile />, label: "Perfil", href: "/profile" },
+    {
+      icon: <UserRoundCog color="#687dac" size={32} />,
+      label: "Administradores",
+      href: "/admin",
+    },
+    {
+      icon: <Stethoscope color="#687dac" size={32} />,
+      label: "Profissionais",
+      href: "/professional",
+    },
+    { icon: <House color="#687dac" size={32} />, label: "Home", href: "/" },
+    {
+      icon: <Brain color="#687dac" size={32} />,
+      label: "Pacientes",
+      href: "/patient",
+    },
+    {
+      icon: <CircleUserRound color="#687dac" size={32} />,
+      label: "Perfil",
+      href: "/profile",
+    },
   ];
 
   const menuItems = [
-    { icon: <Home />, label: "Home", href: "/home" },
-    { icon: <Admin />, label: "Administradores", href: "/admin" },
-    { icon: <Professional />, label: "Profissionais", href: "/professional" },
-    { icon: <Patient />, label: "Pacientes", href: "/patient" },
+    { label: "Home", href: "/" },
+    { label: "Administradores", href: "/admin" },
+    { label: "Profissionais", href: "/professional" },
+    { label: "Pacientes", href: "/patient" },
   ];
 
   return (
-    <header className={`header-container ${showHeader ? "" : "hidden"}`}>
-      <a href="/home" className="logo">
+    <header className="header-container">
+      <a href="/" className="logo">
         <img src="/Logo.png" alt="Logo" />
       </a>
       <nav className="menu">
@@ -61,7 +73,7 @@ export const Header = () => {
           <span className="user-name">Jonh Doe</span>
         </a>
         <button className="logout-button">
-          <Logout />
+          <LogOut color="#687dac" size={32} />
         </button>
       </div>
     </header>
