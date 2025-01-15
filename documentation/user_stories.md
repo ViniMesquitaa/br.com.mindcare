@@ -37,13 +37,14 @@
 #### Paciente
 
 - **Campos:**
+  - Opção para upload de foto **(opcional)**
   - Nome completo **(obrigatórios)**
-  - Telefone _(obrigatórios)_
-  - E-mail _(obrigatórios)_
-  - Senha _(obrigatórios)_
-  - Confirmação de senha _(obrigatórios)_
-  - Opção para upload de foto _(opcional)_
-- **Fluxo pós-cadastro:**
+  - E-mail **(obrigatórios)**
+  - Telefone **(obrigatórios)**
+  - Tipo de Usuário **(obrigatórios)**
+  - Senha **(obrigatórios)**
+  - Confirmação de senha **(obrigatórios)**
+- **Fluxo pós-cadastro: Após o preenchimento dos dados pessoais, o paciente deve informar**
   - Direcionar o paciente para preenchimento de uma anamnese básica:
     - **Queixa principal:** informações sobre o motivo da consulta. _(obrigatórios)_
     - **Histórico psiquiátrico:** registros prévios de transtornos mentais ou tratamentos. _(obrigatórios)_
@@ -57,29 +58,31 @@ Fonte de referência: [Anamnese Psiquiátrica e Psicopatologia - Sanarmed](https
 
 #### Profissional
 
-- **Campos obrigatórios:**
-
-  - Nome completo
-  - Telefone
-  - E-mail
-  - Especialidade
-  - Localização
-  - Faixa etária de atendimento
-  - Quantidade de atendimentos gratuitos disponíveis
-  - Senha
-  - Confirmação de senha
-  - Opção para upload de foto
-
+- **Dados Pessoais Campos:**
+  - Opção para upload de foto **(opcional)**
+  - Nome completo **(obrigatórios)**
+  - E-mail **(obrigatórios)**
+  - Telefone **(obrigatórios)**
+  - Tipo de Usuário **(obrigatórios)**
+  - Senha **(obrigatórios)**
+  - Confirmação de senha **(obrigatórios)**
+- **Fluxo pós-cadastro: Após o preenchimento dos dados pessoais, o profissional deve informar**
+  - **Registro Profissional (CRM, Coren, etc.):** Validação e identificação legal do profissional. **(obrigatórios)**
+  - **UF do Órgão Emissor:** Identificação do estado responsável pelo registro.**(obrigatórios)**
+  - **Especialidade:** Para categorizar o tipo de atendimento oferecido.**(obrigatórios)**
+  - **Faixa etária do atendimento:** Indicação das idades atendidas (ex.: infantil, adulto, idoso).**(obrigatórios)**
+  - **Quantidade de atendimentos gratuitos:** Caso o profissional ofereça serviços sociais.**(obrigatórios)**
+  - **Tipo de atendimento:** Indicar se os atendimentos são realizados de forma remota, presencial, ou ambos.**(obrigatórios)**
 - **Especialidades de Saúde Mental:**
 
-  - **Especialidades Médicas (CRM obrigatório):**
+  - **Especialidades Médicas:**
 
     - Psiquiatria
     - Neurologia
     - Geriatria (com foco em saúde mental em idosos)
     - Medicina da Família e Comunidade (com ênfase em saúde mental)
 
-  - **Psicologia e Subespecialidades (CRM não obrigatório):**
+  - **Psicologia e Subespecialidades:**
 
     - Psicologia Clínica
     - Psicologia Hospitalar
@@ -99,7 +102,7 @@ Fonte de referência: [Anamnese Psiquiátrica e Psicopatologia - Sanarmed](https
     - Terapia Sistêmica de Casal e Família
     - Psicoterapia EMDR (Eye Movement Desensitization and Reprocessing)
 
-  - **Terapias Complementares e Alternativas (CRM não obrigatório):**
+  - **Terapias Complementares e Alternativas:**
 
     - Terapia Ocupacional
     - Arteterapia
@@ -108,7 +111,7 @@ Fonte de referência: [Anamnese Psiquiátrica e Psicopatologia - Sanarmed](https
     - Terapia Corporal
     - Terapia Integrativa e Complementar (Yoga, Meditação, Reiki, etc.)
 
-  - **Áreas de Especialização Adicionais (CRM não obrigatório):**
+  - **Áreas de Especialização Adicionais:**
 
     - Terapia Comportamental Dialética (DBT)
     - Terapia de Aceitação e Compromisso (ACT)
@@ -118,16 +121,12 @@ Fonte de referência: [Anamnese Psiquiátrica e Psicopatologia - Sanarmed](https
     - Terapia de Biofeedback
     - Terapia Ocupacional em Saúde Mental
 
-  - **Intervenções Multidisciplinares (CRM não obrigatório):**
+  - **Intervenções Multidisciplinares:**
     - Enfermagem Psiquiátrica e em Saúde Mental
     - Assistência Social em Saúde Mental
     - Nutrição com Foco em Saúde Mental
     - Fonoaudiologia em Saúde Mental (ex.: reabilitação cognitiva)
     - Educação Física Aplicada à Saúde Mental
-
-- **Campo CRM:**
-  - Será exibido apenas para especialidades médicas, como Psiquiatria, Neurologia, Geriatria e Medicina da Família e Comunidade.
-  - Para as demais especialidades, o campo CRM será ocultado.
 
 ---
 
