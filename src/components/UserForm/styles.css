@@ -90,7 +90,7 @@
 }
 
 .input-group label {
-  color: var(--color-accent);
+  color: #000;
 }
 
 .input-group label small {
