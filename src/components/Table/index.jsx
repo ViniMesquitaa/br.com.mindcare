@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "./styles.css";
+
 const Table = ({
   columns = [],
   rows = [],
