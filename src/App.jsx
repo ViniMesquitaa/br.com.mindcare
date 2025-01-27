@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login/login";
 import { RegisterAdmin } from "./pages/RegisterAdmin";
 import { Header } from "./components/Header";
+import { PassRecover } from "./pages/PassRecover";
 
 function App() {
   const location = useLocation();

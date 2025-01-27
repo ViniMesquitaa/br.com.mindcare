@@ -1,0 +1,161 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background-image: url('/public/fundo-cadastro-mobile.png');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+}
+
+.emaildasenha{
+  max-width: 600px;
+  text-align: center;
+  width: 500px;
+  height: 300px;
+  border-radius: 10px 10px 10px 10px;
+  background-color: #f8f7f2;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.473);
+
+}
+
+.codigoemail {
+  max-width: 600px;
+  text-align: center;
+  width: 500px;
+  height: 300px;
+  top: 325px;
+  left: 602px;
+  gap: 0px;
+  border-radius: 10px 10px 10px 10px;
+  background-color: #f8f7f2;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.473);
+  
+}
+
+.novasenha {
+  max-width: 600px;
+  text-align: center;
+  width: 500px;
+  height: 480px;
+  top: 325px;
+  left: 602px;
+  gap: 0px;
+  border-radius: 10px 10px 10px 10px;
+  background-color: #f8f7f2;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.473);
+  
+}
+
+.titulo {
+  margin-top: 20px;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  margin-left: 52px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+input {
+  width: 80%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+.code-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.code-inputs input {
+  width: 7%;
+  text-align: center;
+}
+button {
+  background-color: #687DAC;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 200px;
+  margin: 10px;
+}
+button:hover {
+  background-color: #365899;
+}
+.link {
+  font-size: 1.0em;
+  color: #4267B2;
+  text-decoration: none;
+}
+.cancelar{
+  background-color: #f8f7f2;
+  border: 1px solid #687DAC;
+  color: black;
+}
+
+.cancelar:hover {
+  background-color: white;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.requirements {
+  margin-left: 10%;
+  text-align: left;
+  font-size: 0.9em;
+  margin-bottom: 0px;
+}
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.button-group button {
+  width: 200px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.spanred {
+  color: red;
+}
+
+.paragrafo {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 620px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .emaildasenha {
+    width: auto;
+
+  }
+
+  .codigoemail {
+    width: auto;
+
+  }
+
+  .novasenha {
+    width: 400px;
+
+  }
+
+
+}

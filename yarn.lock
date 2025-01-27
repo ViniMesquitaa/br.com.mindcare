@@ -1206,7 +1206,7 @@ loose-envify@^1.1.0, loose-envify@^1.4.0:
 
 lucide-react@^0.471.1:
   version "0.471.1"
-  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.471.1.tgz#16f29cd65c7c847eceab0bbf8592443104423249"
+  resolved "https://registry.npmjs.org/lucide-react/-/lucide-react-0.471.1.tgz"
   integrity sha512-syOxwPhf62gg2YOsz72HRn+CIpeudFy67AeKnSR8Hn/fIIF4ubhNbRF+pQ2CaJrl+X9Os4PL87z2DXQi3DVeDA==
 
 math-intrinsics@^1.1.0:
