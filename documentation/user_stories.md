@@ -1,363 +1,319 @@
-# Histórias de Usuário - MindCare
+# Documentação - MindCare
 
-## EFETUAR LOGIN
+## Índice
 
-**Eu como usuário da aplicação MindCare quero acessar a tela de login para autenticar minha conta como administrador, paciente ou profissional.**
+1. [Página de Login](#1-página-de-login)
+2. [Página de Cadastro](#2-página-de-cadastro)
+3. [Página de Recuperação de Senha](#3-página-de-recuperação-de-senha)
+4. [Página Inicial - Administrador](#4-página-inicial-do-administrador)
+5. [Página Inicial - Profissional](#5-página-inicial-do-profissional)
+6. [Página Inicial - Paciente](#6-página-inicial-do-paciente)
+7. [Lista de Administradores](#7-página-de-listatem-de-administradores)
+8. [Cadastro de Administradores](#8-página-de-cadastro-de-administradores)
+9. [Lista de Profissionais](#9-página-de-listatem-de-profissionais)
+10. [Lista de Pacientes](#10-página-de-listatem-de-pacientes)
+11. [Perfil - Administrador](#11-página-de-perfil-do-administrador)
+12. [Perfil - Profissional](#12-página-de-perfil-do-profissionais)
+13. [Perfil - Pacientes](#13-página-de-perfil-do-pacientes)
+14. [Redefinição de Senha](#14-pagina-de-redefinição-de-senha)
 
-### Requisitos
+## **1. Página de Login**
 
-- Exibir os campos:
-  - E-mail: obrigatório, com validação de formato.
-  - Senha: obrigatório, com opção de visualização.
-- Mensagens de erro específicas para:
-  - Formato inválido.
-  - Dados incorretos (usuário ou senha).
-- Links para:
-  - Recuperação de senha ('Esqueci a senha').
-  - Cadastro de novos usuários ('Cadastrar-se').
-- Após o login, direcionar o usuário para:
-  - Administrador: área gerenciar usuários.
-  - Paciente: área de busca por profissionais.
-  - Profissional: área de gestão de atendimentos.
+### **Campos do Formulário**
 
----
+- **E-mail** (campo de texto):
+  - Validação: formato válido de e-mail (ex.: usuario@dominio.com).
+  - Placeholder: “Digite seu e-mail”.
+  - Mensagem de erro: “E-mail inválido”.
+- **Senha** (campo de senha com opção de exibição):
+  - Validação: obrigatório.
+  - Placeholder: “Digite sua senha”.
+  - Mensagem de erro: “Senha inválida”.
+- **Botões e Links**:
+  - Entrar: desabilitado até validação dos campos.
+  - Esqueci a senha: redireciona para recuperação de senha.
+  - Cadastrar-se: redireciona para a página de cadastro.
 
-## REALIZAR CADASTRO
+### **Redirecionamento Pós-login**
 
-**Eu como usuário da aplicação MindCare quero realizar meu cadastro como paciente ou profissional para acessar os recursos da plataforma de acordo com meu perfil.**
+- **Administrador**: Página inicial de gerenciamento.
+- **Paciente**: Página de busca por profissionais.
+- **Profissional**: Página de gestão de atendimentos.
 
----
+## **2. Página de Cadastro**
 
-### Requisitos
+### **Campos Gerais (Para Todos os Usuários)**
 
-#### Seleção de Tipo de Usuário no Cadastro
+- **Foto de perfil** (opcional): Permite o upload de uma foto do usuário.
+- **Nome completo** (obrigatório): Nome do usuário para identificação.
+  - **Placeholder:** "Digite seu nome completo."
+  - **Erro:** "Este campo é obrigatório."
+- **Data de nascimento** (obrigatório): Data de nascimento do usuário.
+  - **Placeholder:** "Informe sua data de nascimento."
+  - **Erro:** "Formato inválido. Use dd/mm/aaaa."
+- **CPF** (obrigatório): CPF do usuário, utilizado para identificação única.
+  - **Placeholder:** "Digite seu CPF."
+  - **Erro:** "CPF inválido."
+- **E-mail** (obrigatório): E-mail para comunicação e recuperação de conta.
+  - **Placeholder:** "Digite seu e-mail."
+  - **Erro:** "E-mail inválido."
+- **Telefone** (obrigatório): Número de telefone para contato.
+  - **Placeholder:** "Digite seu telefone com DDD."
+  - **Erro:** "Número inválido. Use o formato com 10 ou 11 dígitos."
+- **CEP** (obrigatório): Número de telefone para contato.
+  - **Placeholder:** "Digite seu CEP."
+  - **Erro:** "CEP inválido. Deve conter 8 dígitos."
+- **Rua** (campo de texto): Preenchido automaticamente ou manualmente.
+- **Bairro** (campo de texto): Preenchido automaticamente ou manualmente.
+- **Cidade** (campo de texto): Preenchido automaticamente ou manualmente.
+- **Estado** (dropdown): Preenchido automaticamente ou manualmente; opções: lista de UFs.
+- **Número** (campo numérico): Obrigatório, preenchido manualmente.
+  - **Placeholder:** "Digite o número do endereço."
+  - **Erro:** "Este campo é obrigatório."
+- **Complemento** (campo de texto): Opcional.
+  - **Placeholder:** "Digite um complemento (opcional)."
+- **Tipo de Usuário** (obrigatório): Define se o usuário é um paciente ou profissional.
+  - **Placeholder:** "Selecione o tipo de usuário."
+  - **Erro:** "Este campo é obrigatório."
+- **Senha** (obrigatório): Criação de senha para acesso à conta.
+  - **Placeholder:** "Crie sua senha."
+  - **Erro:** "A senha deve ter ao menos 8 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais."
+- **Confirmação de senha** (obrigatório): Confirmação da senha para validação.
+  - **Placeholder:** "Confirme sua senha."
+  - **Erro:** "As senhas devem ser iguais."
 
-- **O usuário deve escolher se deseja se cadastrar como Paciente ou Profissional.**
+### **Cadastro de Paciente**
 
-#### Paciente
+- **Queixa principal** (obrigatório):
 
-- **Campos:**
-  - Opção para upload de foto **(opcional)**
-  - Nome completo **(obrigatórios)**
-  - E-mail **(obrigatórios)**
-  - Telefone **(obrigatórios)**
-  - Tipo de Usuário **(obrigatórios)**
-  - Senha **(obrigatórios)**
-  - Confirmação de senha **(obrigatórios)**
-- **Fluxo pós-cadastro: Após o preenchimento dos dados pessoais, o paciente deve informar**
-  - Direcionar o paciente para preenchimento de uma anamnese básica:
-    - **Queixa principal:** informações sobre o motivo da consulta. _(obrigatórios)_
-    - **Histórico psiquiátrico:** registros prévios de transtornos mentais ou tratamentos. _(obrigatórios)_
-    - **Histórico médico geral:** doenças preexistentes, medicamentos em uso, etc. _(obrigatórios)_
-    - **Uso de substâncias:** álcool, drogas, etc. _(obrigatórios)_
-    - **Histórico familiar:** doenças psiquiátricas na família. _(obrigatórios)_
-    - **Sintomas atuais:** intensidade e detalhes. _(obrigatórios)_
-    - **Expectativas para o tratamento.** _(opcional)_
+  - **Placeholder:** "Descreva o motivo principal da sua consulta."
+  - **Erro:** "Este campo é obrigatório."
+  - **Tooltip:** "Explique em poucas palavras o que motivou você a buscar ajuda."
+
+- **Histórico psiquiátrico** (obrigatório):
+
+  - **Placeholder:** "Informe seu histórico psiquiátrico."
+  - **Erro:** "Este campo é obrigatório."
+  - **Tooltip:** "Inclua informações sobre diagnósticos ou tratamentos psiquiátricos prévios."
+
+- **Histórico médico geral** (obrigatório):
+
+  - **Placeholder:** "Informe seu histórico médico geral."
+  - **Erro:** "Este campo é obrigatório."
+  - **Tooltip:** "Liste condições de saúde prévias ou doenças crônicas."
+
+- **Uso de substâncias** (obrigatório):
+
+  - **Placeholder:** "Descreva seu uso de substâncias (se houver)."
+  - **Erro:** "Este campo é obrigatório."
+  - **Tooltip:** "Mencione o uso de álcool, tabaco ou outras substâncias."
+
+- **Histórico familiar** (obrigatório):
+
+  - **Placeholder:** "Informe seu histórico familiar de saúde."
+  - **Erro:** "Este campo é obrigatório."
+  - **Tooltip:** "Inclua informações sobre condições de saúde presentes em parentes próximos."
+
+- **Sintomas atuais** (obrigatório):
+
+  - **Placeholder:** "Descreva os sintomas que você está sentindo."
+  - **Erro:** "Este campo é obrigatório."
+  - **Tooltip:** "Liste os sintomas mais relevantes e como eles afetam seu dia a dia."
+
+- **Expectativas para o tratamento** (opcional):
+  - **Placeholder:** "Descreva suas expectativas para o tratamento (opcional)."
+  - **Tooltip:** "Conte o que espera alcançar com o tratamento, se desejar."
 
 Fonte de referência: [Anamnese Psiquiátrica e Psicopatologia - Sanarmed](https://sanarmed.com/anamnese-psiquiatrica-e-psicopatologia/)
 
-#### Profissional
-
-- **Dados Pessoais Campos:**
-  - Opção para upload de foto **(opcional)**
-  - Nome completo **(obrigatórios)**
-  - E-mail **(obrigatórios)**
-  - Telefone **(obrigatórios)**
-  - Tipo de Usuário **(obrigatórios)**
-  - Senha **(obrigatórios)**
-  - Confirmação de senha **(obrigatórios)**
-- **Fluxo pós-cadastro: Após o preenchimento dos dados pessoais, o profissional deve informar**
-  - **Registro Profissional (CRM, Coren, etc.):** Validação e identificação legal do profissional. **(obrigatórios)**
-  - **UF do Órgão Emissor:** Identificação do estado responsável pelo registro.**(obrigatórios)**
-  - **Especialidade:** Para categorizar o tipo de atendimento oferecido.**(obrigatórios)**
-  - **Faixa etária do atendimento:** Indicação das idades atendidas (ex.: infantil, adulto, idoso).**(obrigatórios)**
-  - **Quantidade de atendimentos gratuitos:** Caso o profissional ofereça serviços sociais.**(obrigatórios)**
-  - **Tipo de atendimento:** Indicar se os atendimentos são realizados de forma remota, presencial, ou ambos.**(obrigatórios)**
-- **Especialidades de Saúde Mental:**
-
-  - **Especialidades Médicas:**
-
-    - Psiquiatria
-    - Neurologia
-    - Geriatria (com foco em saúde mental em idosos)
-    - Medicina da Família e Comunidade (com ênfase em saúde mental)
-
-  - **Psicologia e Subespecialidades:**
-
-    - Psicologia Clínica
-    - Psicologia Hospitalar
-    - Psicologia Infantil
-    - Psicologia Escolar/Educacional
-    - Psicologia Organizacional e do Trabalho
-    - Psicologia do Esporte
-    - Neuropsicologia
-    - Psicologia Jurídica
-    - Psicologia Social
-    - Psicologia Comportamental
-    - Psicanálise
-    - Psicoterapia Cognitivo-Comportamental
-    - Psicoterapia Psicanalítica
-    - Psicoterapia Humanista
-    - Psicoterapia Transpessoal
-    - Terapia Sistêmica de Casal e Família
-    - Psicoterapia EMDR (Eye Movement Desensitization and Reprocessing)
-
-  - **Terapias Complementares e Alternativas:**
-
-    - Terapia Ocupacional
-    - Arteterapia
-    - Musicoterapia
-    - Dançaterapia
-    - Terapia Corporal
-    - Terapia Integrativa e Complementar (Yoga, Meditação, Reiki, etc.)
-
-  - **Áreas de Especialização Adicionais:**
-
-    - Terapia Comportamental Dialética (DBT)
-    - Terapia de Aceitação e Compromisso (ACT)
-    - Terapia Familiar Sistêmica
-    - Terapia de Grupo
-    - Coaching de Saúde Mental
-    - Terapia de Biofeedback
-    - Terapia Ocupacional em Saúde Mental
-
-  - **Intervenções Multidisciplinares:**
-    - Enfermagem Psiquiátrica e em Saúde Mental
-    - Assistência Social em Saúde Mental
-    - Nutrição com Foco em Saúde Mental
-    - Fonoaudiologia em Saúde Mental (ex.: reabilitação cognitiva)
-    - Educação Física Aplicada à Saúde Mental
-
----
-
-#### Mensagens de Validação e Sucesso
-
-- **Validações de campos obrigatórios:**
-  - Caso algum campo obrigatório não seja preenchido, exibir a mensagem:  
-    _"Este campo é de preenchimento obrigatório"._
-- **Mensagem pós-cadastro bem-sucedido:**
-  - Exibir a mensagem:  
-    _"Cadastro feito com sucesso! Agora você pode acessar sua conta."_
-
-## RECUPERAR SENHA
-
-**Eu como usuário da aplicação MindCare quero redefinir minha senha para recuperar o acesso à plataforma com segurança.**
-
-### Requisitos
-
-- Campo para inserir e-mail, com validação.
-- Envio de código de verificação ao contato informado.
-- Formulário para definir nova senha, respeitando critérios de segurança (mínimo de 8 caracteres, letra maiúscula, número e símbolo).
-- Mensagens claras de erro ou sucesso em cada etapa:
-  - Caso o código esteja incorreto, exibir: 'Código inválido. Verifique e tente novamente'.
-  - Caso a senha não atenda aos critérios, exibir: 'Senha não atende aos critérios de segurança'.
-  - Após sucesso: 'Senha alterada com sucesso! Agora você pode acessar sua conta'.
-
----
-
-## ADMINISTRADOR MASTER
-
-**Eu como administrador master da aplicação MindCare quero acessar a área de administração para gerenciar paciente, profissionais e cadastrar outros administradores.**
+### **Cadastro de Profissional**
 
----
+- **Registro Profissional** (obrigatório): Número de registro do profissional (CRM, Coren, etc.).
 
-### Requisitos
+  - **Placeholder:** "Digite seu registro profissional."
+  - **Erro:** "Este campo é obrigatório."
 
-#### Painel Administrativo Exclusivo
+- **UF do Órgão Emissor** (obrigatório): Estado responsável pela emissão do registro profissional.
 
-O administrador master deve ter acesso a um painel com as seguintes funcionalidades:
+  - **Placeholder:** "Selecione a UF emissora."
+  - **Erro:** "Este campo é obrigatório."
 
-#### 1. Página Inicial (Home)
+- **Especialidade** (obrigatório): Área de atuação do profissional.
 
-- **Listagem de profissionais e pacientes cadastrados recentemente.**
-- **Indicadores resumidos:**  
-  Exibir quatro campos com informações consolidadas:
-  - Total de profissionais cadastrados.
-  - Total de profissionais logados.
-  - Total de pacientes cadastrados.
-  - Total de registros ativos.
+  - **Placeholder:** "Digite sua especialidade."
+  - **Erro:** "Este campo é obrigatório."
 
-#### 2. Gerenciar Administradores
+- **Faixa etária do atendimento** (obrigatório): Idades atendidas pelo profissional (ex.: infantil, adulto, idoso).
 
-- **Listagem de administradores cadastrados, com filtros:**
-  - Nome
-  - E-mail
-  - Data de cadastro
-  - Status (ativo/inativo)
-- **Funcionalidades:**
-  - Cadastrar novos administradores (Campos: Nome, E-mail, Senha).
-  - Botão para desativar administradores existentes.
+  - **Placeholder:** "Informe a faixa etária atendida."
+  - **Erro:** "Este campo é obrigatório."
 
-#### 3. Gerenciar Pacientes
+- **Quantidade de atendimentos gratuitos** (obrigatório): Indicação de quantos atendimentos gratuitos o profissional oferece, caso haja essa opção.
 
-- **Listagem de todos os pacientes, com filtros:**
-  - Nome
-  - E-mail
-  - Status (ativo/inativo)
-  - ID do prontuário
-  - Médico responsável
-  - Diagnóstico
-- **Funcionalidades:**
-  - Botão para ativar ou desativar contas.
+  - **Placeholder:** "Informe a quantidade de atendimentos gratuitos."
+  - **Erro:** "Este campo é obrigatório."
 
-#### 4. Gerenciar Profissionais
+- **Tipo de atendimento** (obrigatório): Define o formato do atendimento (remoto, presencial ou ambos).
+  - **Placeholder:** "Selecione o tipo de atendimento."
+  - **Erro:** "Este campo é obrigatório."
 
-- **Listagem de todos os profissionais, com filtros:**
-  - Nome
-  - Telefone
-  - E-mail
-  - Especialidade
-  - Localização
-  - Faixa etária de atendimento
-  - Quantidade de atendimentos gratuitos disponíveis
-  - Status (Aprovado/Rejeitado/Pendente)
-
-#### 5. Aprovar ou Rejeitar Profissionais
-
-- **Listagem de profissionais pendentes de aprovação.**
-- **Funcionalidades:**
-  - Revisar o perfil do profissional (incluindo especialidade, documentação, etc.) antes de aprovação.
-  - Campo justificativa de rejeição.
-  - Botão para aprovar ou rejeitar o profissional.
-
----
-
-## ADMINISTRADOR
-
-**Eu como administrador master da aplicação MindCare quero acessar a área de administração para gerenciar paciente e profissionais.**
-
-### Requisitos
+## **3. Página de Recuperação de Senha**
 
-#### Painel Administrativo Exclusivo
+### **Etapa 1: Entrada de E-mail**
 
-O administrador deve ter acesso a um painel com as seguintes funcionalidades:
+- **E-mail** (texto):
+  - Placeholder: “Digite seu e-mail”.
+  - Botão: “Enviar Código”.
 
-#### 1. Página Inicial (Home)
+### **Etapa 2: Código de Verificação**
 
-- **Listagem de profissionais e pacientes cadastrados recentemente.**
-- **Indicadores resumidos:**  
-  Exibir quatro campos com informações consolidadas:
-  - Total de profissionais cadastrados.
-  - Total de profissionais logados.
-  - Total de pacientes cadastrados.
-  - Total de registros ativos.
+- **Campos de Código** (5 campos numéricos):
+  - Avanço automático para o próximo campo ao digitar.
+  - Botão: “Verificar Código”.
+  - Link: “Reenviar Código”.
 
-#### 2. Gerenciar Pacientes
+### **Etapa 3: Criação de Nova Senha**
 
-- **Listagem de todos os pacientes, com filtros:**
-  - Nome
-  - E-mail
-  - Status (ativo/inativo)
-  - ID do prontuário
-  - Médico responsável
-  - Diagnóstico
-- **Funcionalidades:**
-  - Botão para ativar ou desativar contas.
-
-#### 3. Gerenciar Profissionais
-
-- **Listagem de todos os profissionais, com filtros:**
-  - Nome
-  - Telefone
-  - E-mail
-  - Especialidade
-  - Localização
-  - Faixa etária de atendimento
-  - Quantidade de atendimentos gratuitos disponíveis
-  - Status (Aprovado/Rejeitado/Pendente)
-
-#### 4. Aprovar ou Rejeitar Profissionais
-
-- **Listagem de profissionais pendentes de aprovação.**
-- **Funcionalidades:**
-  - Revisar o perfil do profissional (incluindo especialidade, documentação, etc.) antes de aprovação.
-  - Campo justificativa de rejeição.
-  - Botão para aprovar ou rejeitar o profissional.
-
----
-
-## PROFISSIONAL
-
-**Eu, como profissional da aplicação MindCare, quero acessar uma área personalizada para gerenciar meu perfil, definir horários de atendimento e acompanhar informações sobre meus pacientes, de forma prática e eficiente.**
-
-### Requisitos
-
-### 1. Página Home
-
-1. **Notificações personalizadas**
-   - Exibir notificações no header sobre novos agendamentos, alterações de status de pacientes, mensagens de administração e atualizações do sistema.
-2. **Mensagem de Boas-vindas**
-   - Exibir: "Olá, Seja bem-vindo(a), [Nome do Profissional]!"
-3. **Tabela de Pacientes**
-   - Tabela paginada com filtros por:
-     - Nome
-     - E-mail
-     - Status (ativo/inativo)
-     - ID do prontuário
-     - Diagnóstico
-     - CPF
-   - Oferecer opção de exportação de dados nos formatos CSV ou PDF.
-   - Acesso rápido a detalhes e histórico dos pacientes clicando no botão de ação.
-
-### 2. Página de Perfil
-
-- **Campos para atualizar informações do profissional:**
-
-  - Nome completo
-  - Telefone
-  - E-mail
-  - Especialidade
-  - Localização
-  - Faixa etária de atendimento
-  - Quantidade de atendimentos gratuitos disponíveis
-  - Alterar senha
-  - Opção para upload de foto de perfil
-  - **Botão para salvar alterações.**
-
-- **Gerenciar Horários de Atendimento**
-  - Definir dias e horários disponíveis na agenda.
-  - Bloquear ou liberar horários específicos conforme necessidade.
-  - Calendário interativo para visualização e ajuste rápido dos horários.
-  - **Botão para salvar alterações.**
-
----
-
-## PACIENTE
-
-**Eu como paciente da aplicação MindCare quero buscar por profissionais com base em filtros para encontrar o atendimento adequado às minhas necessidades gerenciar meus dados componhar meus atendimentos realizados e futuros atendimentos, e meus prontuários com infomação necessárias.**
-
-### Requisitos
-
-### 1. Página Home
-
-1. **Mensagem de boas-vindas:** Exibir mensagem personalizada com o nome do paciente: “Olá, [Nome do Paciente], como você está se sentindo hoje?”
-
-2. Exibir uma tabela de busca com os seguintes filtros:
-
-- Nome completo
-- Telefone
-- E-mail
-- Especialidade
-- Localização
-- Faixa etária de atendimento
-- Quantidade de atendimentos gratuitos disponíveis
-- Exibir uma listagem de profissionais com as informações básicas:
-  - Nome, especialidade, quantidade de atendimentos gratuitos disponíveis e foto.
-  - Botão para acessar o perfil detalhado do profissional e agendar uma consulta.
-
-### 2. Página de Perfil
-
-- Atualizar informações pessoais:
-- **Campos:**
-  - Nome completo **(obrigatórios)**
-  - Telefone _(obrigatórios)_
-  - E-mail _(obrigatórios)_
-  - Senha _(obrigatórios)_
-  - Confirmação de senha _(obrigatórios)_
-  - Opção para upload de foto _(opcional)_
-
-### 3. Página de histórico de consultas
-
-- Visualizar histórico de consultas:
-  - Listagem de sessões realizadas e futuras.
-  - Status das sessões (confirmado, pendente, cancelado).
+- **Nova Senha** (obrigatório)
+  - **Validação:** A senha deve seguir os seguintes critérios de segurança:
+    - No mínimo 8 caracteres.
+    - Pelo menos uma letra maiúscula.
+    - Pelo menos uma letra minúscula.
+    - Pelo menos um número.
+    - Pelo menos um caractere especial (ex.: !@#$%&\*).
+- **Confirmação de senha** (obrigatório): Confirmação da senha para validação.
+  - **Validação:** Deve ser idêntica à senha inserida no campo anterior.
+- Botões: **“Cancelar”** (redireciona para login), **“Salvar”** (salva e redireciona para login).
+
+## **4. Página Inicial do Administrador**
+
+Esta página é exclusiva para administradores e exibe a seguinte mensagem de boas-vindas:
+
+"Olá, [nome do usuário]! Seja bem-vindo(a) ao seu painel de controle."
+
+### **Indicadores Resumidos**
+
+- Total de profissionais cadastrados.
+- Total de profissionais logados.
+- Total de pacientes cadastrados.
+- Registros ativos.
+
+### **Listagens Resumidas**
+
+- **Profissionais**:
+  - Exibidos em uma tabela não paginada com os 5 cadastros mais recentes.
+  - Colunas: Nome, registro profissional, especialidade, status, e botão "Detalhes".
+  - Ação: O botão "Detalhes" redireciona para a [Página de Perfil do Profissional](#12-página-de-perfil-do-profissionais).
+- **Pacientes** (tabela não paginada):
+  - Exibidos em uma tabela não paginada com os 5 cadastros mais recentes.
+  - Colunas: Nome, data de nascimento, prontuário, e botão "Detalhes".
+  - Ação: O botão "Detalhes" redireciona para a [Página de Perfil do Paciente](#13-página-de-perfil-do-pacientes).
+
+## **5. Página Inicial do Profissional**
+
+- **Mensagem de Boas-vindas**: "Olá, Seja bem-vindo(a), [Nome do Profissional]!"
+
+- **Filtro de busca**
+
+  - Nome, Data de Nascimento, E-mail, Prontuário, Diagnóstico, Status (Ativo/Inativo).
+
+- **Listagem** (tabela paginada):
+  - Nome, Data de Nascimento, E-mail, Prontuário, Diagnóstico, Status (Ativo/Inativo)
+  - Botão “Detalhes” (redireciona para [Página de Perfil do Paciente](#13-página-de-perfil-do-pacientes)).
+
+## **6. Página Inicial do Paciente**
+
+- **Mensagem de Boas-vindas** “Olá, [Nome do Paciente], como você está se sentindo hoje?”
+
+- **Filtro de Busca**
+
+  - Registro Profissional, Nome, Telefone, E-mail, Especialidade, Faixa Etária de Atendimento, Quantidade de Atendimentos Gratuitos Disponíveis.
+
+- **Listagem (Tabela Paginada)** Exibe as seguintes informações:
+  - Registro Profissional, Nome, Telefone, E-mail, Especialidade, Faixa Etária de Atendimento, Quantidade de Atendimentos Gratuitos Disponíveis.
+  - Botão “Detalhes” (redireciona para [Página de Perfil do Profissonal](#12-página-de-perfil-do-profissionais)).
+
+## **7. Página de Listatem de Administradores**
+
+Visível apenas para administradores master.
+
+- **Texto Introdução:**
+  "Listar administradores Cadastrados
+  Aqui você pode visualizar todos os administradores cadastrados no aplicativo MindCare"
+
+- **Filtro de Busca**
+
+  - ID, Nome, Data de Cadastro, Tipo de Usuário (Comum ou Master), Status (Ativo ou Inativo)
+  - Botão “Buscar” para pesquisar resultados
+  - Botão “+ Novo Administrador” (redireciona para [Página de Cadastro de Administradores](#6-página-de-cadastro-de-administradores))
+
+- **Listagem** (tabela paginada):
+  - ID, nome, data de cadastro, tipo de usuário (comum ou master), status, botão “Detalhes” (Ao clicar deve levar para [Página de Perfil do Administrador](#)).
+
+## **8. Página de Cadastro de Administradores**
+
+Visível apenas para administradores master.
+
+Formulário de Cadastro O formulário é o mesmo dos [Campos Gerais (Para Todos os Usuários)](#campos-gerais-para-todos-os-usuários), mas a senha estará desabilitada e será gerada automaticamente. A nova senha será enviada ao usuário, que, ao fazer login, será redirecionado para [Redefinição de Senha](#10-página-de-listatem-de-pacientes).
+
+## **9. Página de Listatem de Profissionais**
+
+- **Texto Introdução:**
+  "Listar profissionais cadastrados
+  Aqui você pode visualizar todos os profissionais cadastrados no aplicativo MindCare"
+
+- **Listagem (tabela paginada)** Exibe as seguintes informações:
+  - ID, Nome, Especialidade, Quantidade de Atendimentos Gratuitos, Status (Pendente, Aprovado, Rejeitado)
+  - Botão “Detalhes” (redireciona para [Página de Perfil do Prossional](#10-página-de-perfil-do-profissional)).
+
+## **10. Página de Listatem de Pacientes**
+
+- **Texto Introdução:**
+  "Listar pacientes cadastrados
+  Aqui você pode visualizar todos os pacientes cadastrados no aplicativo MindCare"
+
+- **Listagem** (tabela paginada):
+  - ID, Nome, Data de Nascimento, Número do Prontuário, Status (Ativo ou Inativo)
+  - botão “Detalhes” (Ao clicar deve levar para [Página de Perfil do Paciente](#13-página-de-perfil-do-pacientes)).
+
+## **11. Página de Perfil do Administrador**
+
+- Exibe o formulário de [Campos Gerais](#campos-gerais-para-todos-os-usuários), mas sem os campos de senha e confirmação de senha.
+- O usuário logado pode editar apenas seus próprios dados.
+- Caso o usuário seja um administrador master, ele poderá visualizar as informações do administrador e ativar ou desativar o perfil desse usuário.
+
+## **12. Página de Perfil do Profissionais**
+
+### **A página apresenta um componente de abas (tabs) com os seguintes conteúdos:**
+
+- **Primeira Aba:** Formulário de [Campos Gerais](#campos-gerais-para-todos-os-usuários)(sem os campos de senha e confirmação de senha).
+  - O usuário logado pode editar apenas seus próprios dados.
+- **Segunda Aba:**
+  - **Para Profissionais:** O profissional pode editar seus horários e as informações do Cadastro de Profissional.
+  - **Para Pacientes:** O paciente visualiza os dados do profissional com os campos desabilitados. Um botão para agendar consulta fica habilitado somente quando um horário e dia são selecionados.
+  - **Para Administradores:** O administrador visualiza os dados do profissional com os campos desabilitados. A aba inclui o status do profissional (Aprovado, Pendente, Reprovado), com botões para aprovar ou reprovar. Para reprovar, o campo justificativa deve estar preenchido.
+
+## **13. Página de Perfil do Paciente**
+
+A página possui um componente de abas (tabs) com as seguintes seções:
+
+- **Primeira Aba**: Formulário de [Campos Gerais](#campos-gerais-para-todos-os-usuários) (sem os campos de senha e confirmação de senha).
+
+  - O usuário logado pode editar apenas seus próprios dados.
+
+- **Segunda Aba**: Informações da [Anamnese](#cadastro-de-paciente), onde o paciente pode editar seus dados.
+
+- **Terceira Aba**: Histórico de consultas. Caso o profissional tenha passado alguma receita, o paciente pode baixar o PDF.
+
+**Comportamento para diferentes usuários**:
+
+- **Profissional**: A primeira e segunda abas estão desabilitadas. Na terceira aba, ele pode enviar uma receita médica (com opção de upload) e adicionar um diagnóstico ou observação.
+- **Administrador**: O administrador visualiza todas as informações do paciente com campos desabilitados, podendo apenas baixar a receita na aba de histórico.
+- **Histórico de Consultas**: A tabela exibe:
+  - Nome do profissional, Data da sessão, Status (Confirmado ou Pendente), Receita, Ação (somente o paciente pode confirmar se a sessão ocorreu).
+
+## **14. Página de Redefinição de Senha**
+
+A página contém os campos:
+
+- Senha antiga, nova senha e confirmação da nova senha, seguindo os critérios de segurança.
