@@ -20,12 +20,6 @@
   font-weight: bold;
 }
 
-.admin-title {
-  color: #687dac;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
 .professional-table {
   display: flex;
   flex-direction: column;

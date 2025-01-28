@@ -18,7 +18,7 @@ export default function ProfessionalPage() {
   return (
     <section className="professional-container">
       <section className="professional-title">
-        <h2>Lista de profissionais cadastrados!</h2>
+        <h2>Lista de profissionais cadastrados</h2>
         <p>
           Aqui você pode visualizar todos os profissionais cadstrados no
           aplicativo MindCare
