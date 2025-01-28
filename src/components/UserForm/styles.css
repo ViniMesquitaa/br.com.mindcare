@@ -1,0 +1,169 @@
+:root {
+  --max-width: 43.75rem;
+  --padding: 1.875rem;
+  --border-radius: 0.625rem;
+  --box-shadow: 0rem 0rem 0.25rem rgba(0, 0, 0, 0.4);
+  --gap: 1.25rem;
+  --font-size-base: 1rem;
+  --font-size-small: 0.75rem;
+  --color-bg: #f8f7f2;
+  --color-bg-alt: #c8d9d3;
+  --color-bg-hover: #adbab1;
+  --color-primary: #687dac;
+  --color-primary-hover: #5a6d97;
+  --color-accent: #84a29f;
+  --color-error: #ff0000;
+  --border-radius-small: 0.25rem;
+  --padding-small: 0.375rem;
+  --padding-medium: 0.625rem;
+  --padding-large: 1.25rem;
+}
+
+.form {
+  max-width: var(--max-width);
+  width: 100%;
+  background-color: var(--color-bg);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.photo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo-container .profile-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.photo-container .profile-icon {
+  width: 100px;
+  height: 100px;
+  color: var(--color-primary);
+}
+
+.file-input {
+  display: none;
+}
+
+.file-label {
+  font-size: var(--font-size-base);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  cursor: pointer;
+}
+
+.file-label span {
+  font-size: var(--font-size-base);
+  padding: var(--padding-small) var(--padding-large);
+  border-radius: var(--border-radius-small);
+  text-align: center;
+  display: inline-block;
+  background-color: var(--color-bg-alt);
+  transition: background-color 0.3s ease;
+}
+
+.file-label span:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border-radius: var(--border-radius-small);
+  border: 1px solid var(--color-bg-alt);
+}
+
+.input-group label {
+  color: #000;
+}
+
+.input-group label small {
+  color: var(--color-error);
+}
+
+.input-field.error {
+  border-color: var(--color-error);
+}
+
+.error-message {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: var(--color-error);
+  font-size: var(--font-size-small);
+}
+
+.wrapper {
+  gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.password-container {
+  position: relative;
+}
+
+.toggle-button {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  right: 0.625rem;
+  top: 0.938rem;
+}
+
+.toggle-button .toggle-icon {
+  height: 1.3rem;
+  width: 1.3rem;
+  color: var(--color-accent);
+}
+
+.submit-button {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  padding: var(--padding-medium) var(--padding-large);
+  border: none;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.submit-button:hover {
+  background-color: var(--color-primary-hover);
+}
+@media (max-width: 425px) {
+  .form {
+    padding: var(--padding-large);
+  }
+
+  .photo-container .file-label span {
+    display: none;
+  }
+
+  .photo-container .profile-icon {
+    width: 50px;
+    height: 50px;
+    color: var(--color-primary);
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+  }
+}

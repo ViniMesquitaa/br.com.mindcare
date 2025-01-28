@@ -1,0 +1,52 @@
+.custom-table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 0.625rem;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 0.0625rem solid #d6d6d6;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.custom-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.custom-table thead th {
+  background-color: #d2e0ee;
+}
+
+.custom-table thead th,
+.custom-table td {
+  border-left: none;
+  border-right: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 1rem 0;
+}
+
+.pagination button {
+  padding: 0.3125rem 0.625rem;
+  border: 0.0625rem solid #d2e0ee;
+  cursor: pointer;
+  border-radius: 0.375rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d2e0ee;
+  color: #000;
+}
+
+.pagination .currentPageButton {
+  background-color: #84a29f;
+}
