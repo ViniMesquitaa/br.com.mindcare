@@ -81,40 +81,52 @@ export const ROWS_PACIENTE = [
 ];
 
 export const COLUMNS_PROFISSIONAIS = [
+  { name: "id", label: "ID" },
   { name: "name", label: "Nome" },
-  { name: "specialty", label: "Nome" },
+  { name: "specialty", label: "Especialidade" },
+  { name: "quantityFree", label: "Quant. Gratuitas" },
   { name: "status", label: "Status" },
   { name: "details", label: "Detalhes" },
 ];
 
 export const ROWS_PROFISSIONAIS = [
   {
+    id: 1,
     name: "Dr. João Mendes",
     specialty: "Cardiologia",
+    quantityFree: 15,
     status: "Ativo",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
   {
+    id: 2,
     name: "Dra. Maria Clara",
     specialty: "Pediatria",
+    quantityFree: 3,
     status: "Ativo",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
   {
+    id: 3,
     name: "Dr. Carlos Eduardo",
     specialty: "Ortopedia",
+    quantityFree: 8,
     status: "Inativo",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
   {
+    id: 4,
     name: "Dra. Ana Luiza",
     specialty: "Dermatologia",
+    quantityFree: 5,
     status: "Ativo",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
   {
+    id: 5,
     name: "Dr. Pedro Henrique",
     specialty: "Psiquiatria",
+    quantityFree: 9,
     status: (
       <span style={{ color: "green" }}>
         <Circle strokeWidth={0} fill="green" size="10" /> Aprovado
