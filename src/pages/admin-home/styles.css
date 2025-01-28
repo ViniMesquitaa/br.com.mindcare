@@ -1,0 +1,30 @@
+.admin-home-container {
+  max-width: 1700px;
+  margin: auto;
+  padding: 80px;
+}
+
+.admin-home-title {
+  padding-bottom: 60px;
+}
+
+.admin-home-title h2 {
+  color: #687dac;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.admin-home-title p {
+  color: gray;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.admin-home-table {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+  border: 1px solid #dddddd;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px lightgray;
+}

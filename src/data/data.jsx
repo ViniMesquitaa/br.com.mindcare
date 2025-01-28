@@ -4,6 +4,7 @@ export const COLUMNS_ADMINISTRADORES = [
   { name: "id", label: "ID" },
   { name: "name", label: "Nome" },
   { name: "createdAt", label: "Data de Cadastro" },
+  { name: "status", label: "Status" },
   { name: "details", label: "Detalhes" },
 ];
 
@@ -11,30 +12,35 @@ export const ROWS_ADMINISTRADORES = [
   {
     id: "1",
     name: "Carlos Almeida",
+    status: "Ativo",
     createdAt: "2025-01-01",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
   {
     id: "2",
     name: "Ana Beatriz",
+    status: "Ativo",
     createdAt: "2025-01-02",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
   {
     id: "3",
     name: "João Silva",
+    status: "Ativo",
     createdAt: "2025-01-03",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
   {
     id: "4",
     name: "Maria Oliveira",
+    status: "Ativo",
     createdAt: "2025-01-04",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
   {
     id: "5",
     name: "Pedro Henrique",
+    status: "Ativo",
     createdAt: "2025-01-05",
     details: <UserRoundSearch color="#d2e0ee" />,
   },

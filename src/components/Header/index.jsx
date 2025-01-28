@@ -39,6 +39,7 @@ export const Header = () => {
 
   const menuItems = [
     { label: "Home", href: "/" },
+    { label: "AdminHome", href: "/adminhome" },
     { label: "Administradores", href: "/admin" },
     { label: "Profissionais", href: "/professional" },
     { label: "Pacientes", href: "/patient" },

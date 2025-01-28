@@ -8,6 +8,7 @@ import "./app.css";
 import AdminPage from "./pages/admin";
 import PatientPage from "./pages/patients";
 import ProfessionalPage from "./pages/professionals";
+import AdminHomePage from "./pages/admin-home";
 
 function App() {
   const location = useLocation();
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/adminhome" element={<AdminHomePage />} />
         <Route path="/admin/register" element={<RegisterAdmin />} />
         <Route path="/patient" element={<PatientPage />} />
         <Route path="/professional" element={<ProfessionalPage />} />
