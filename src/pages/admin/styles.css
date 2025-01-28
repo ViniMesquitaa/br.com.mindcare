@@ -1,0 +1,44 @@
+.admin-container {
+  max-width: 1700px;
+  margin: auto;
+  padding: 80px;
+}
+
+.admin-title {
+  color: #687dac;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.featured {
+  display: flex;
+  padding: 80px 0;
+  justify-content: space-between;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
+
+.featured-box {
+  background-color: #d2e0ee;
+  width: 320px;
+  padding: 40px;
+  justify-content: center;
+  text-align: center;
+  border-radius: 5%;
+}
+
+.featured-box h2 {
+  font-size: 3rem;
+}
+
+.tables {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.tables section {
+  width: 48%;
+  justify-content: space-between;
+}

@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import "./styles.css";
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   const [activePage, setActivePage] = useState("/");
@@ -50,9 +51,9 @@ export const Header = () => {
       </a>
       <nav className="menu">
         {menuItems.map(({ label, href }) => (
-          <a key={href} href={href} className="menu-item">
+          <NavLink key={href} to={href}>
             {label}
-          </a>
+          </NavLink>
         ))}
       </nav>
       <nav className="icon-container">
