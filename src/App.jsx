@@ -6,6 +6,7 @@ import { Header } from "./components/Header";
 import { PassRecover } from "./pages/PassRecover";
 import "./app.css";
 import AdminPage from "./pages/admin";
+import PatientPage from "./pages/patients";
 import ProfessionalPage from "./pages/professionals";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/register" element={<RegisterAdmin />} />
+        <Route path="/patient" element={<PatientPage />} />
         <Route path="/professional" element={<ProfessionalPage />} />
       </Routes>
     </>

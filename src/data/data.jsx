@@ -40,42 +40,54 @@ export const ROWS_ADMINISTRADORES = [
   },
 ];
 
-export const COLUMNS_PACIENTE = [
+export const COLUMNS_PATIENTS = [
+  { name: "id", label: "ID" },
   { name: "name", label: "Nome" },
   { name: "dateBirth", label: "Data de nascimento" },
   { name: "medicalRecords", label: "Prontuário" },
+  { name: "status", label: "Status" },
   { name: "details", label: "Detalhes" },
 ];
 
-export const ROWS_PACIENTE = [
+export const ROWS_PATIENTS = [
   {
+    id: 1,
     name: "João da Silva",
     dateBirth: "1990-05-14",
     medicalRecords: "123456",
+    status: "Ativo",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
   {
+    id: 2,
     name: "Maria Oliveira",
     dateBirth: "1985-03-22",
     medicalRecords: "789101",
+    status: "Ativo",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
   {
+    id: 3,
     name: "Carlos Santos",
     dateBirth: "1978-11-30",
     medicalRecords: "112131",
+    status: "Ativo",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
   {
+    id: 4,
     name: "Ana Souza",
     dateBirth: "2000-07-09",
     medicalRecords: "415161",
+    status: "Ativo",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
   {
+    id: 5,
     name: "Pedro Ferreira",
     dateBirth: "1995-12-18",
     medicalRecords: "718192",
+    status: "Ativo",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
 ];
