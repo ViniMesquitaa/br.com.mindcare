@@ -94,11 +94,15 @@
   .menu {
     display: none;
   }
+
   .header-container {
-    position: absolute;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     padding: 0.625rem 1rem;
     justify-content: center;
     box-shadow: 0rem -0.125rem 0.5rem rgba(123, 130, 129, 0.4);
+    z-index: 9999;
   }
 
   .icon-container {
