@@ -201,8 +201,9 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
           )}
 
           <input
-            type="file"
             id="file"
+            name="file"
+            type="file"
             className="file-input"
             onChange={handleFileChange}
           />
