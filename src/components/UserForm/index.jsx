@@ -237,7 +237,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               type="text"
               id="cpf"
               name="cpf"
-              maxLength="14"
+              maxlength="14"
               onFocus={handleFocus}
               value={formValues.cpf}
               onChange={handleInputChange}
@@ -256,7 +256,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               type="text"
               id="birthDate"
               name="birthDate"
-              maxLength="10"
+              maxlength="10"
               onFocus={handleFocus}
               value={formValues.birthDate}
               onChange={handleInputChange}
@@ -317,7 +317,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               type="text"
               id="cep"
               name="cep"
-              maxLength="9"
+              maxlength="9"
               placeholder="Digite seu CEP."
               onFocus={handleFocus}
               value={formValues.cep}
