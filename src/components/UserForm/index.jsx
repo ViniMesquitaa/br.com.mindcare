@@ -458,6 +458,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
             labelClassName="input-label"
             inputClassName="input-field"
             errorClassName="error-message"
+            toggleButtonClassName="toggle-button"
           />
           <InputPassword
             label="Confirmação de senha"

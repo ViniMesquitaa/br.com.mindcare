@@ -62,7 +62,7 @@ const Login = () => {
               type="email"
               id="email"
               name="email"
-              className={`input-type ${errors.email ? "input-error" : ""}`}
+              className={`input-type ${errors.email ? "error" : ""}`}
               placeholder="Digite seu e-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -80,7 +80,7 @@ const Login = () => {
             labelClassName="label-login"
             inputClassName="input-type"
             errorClassName="error-text"
-            toggleButtonClassName="eye-button "
+            toggleButtonClassName="eye-button"
           />
 
           <div className="container-esqueceu-senha">

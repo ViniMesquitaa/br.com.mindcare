@@ -72,6 +72,10 @@
   width: 100%;
 }
 
+.input-type.error {
+  border-color: var(--color-error);
+}
+
 .container-esqueceu-senha {
   width: 100%;
   justify-content: end;
@@ -132,10 +136,6 @@
   color: var(--color-error);
   font-size: 15px;
   font-weight: 500;
-}
-
-.input-error {
-  border-color: var(--color-error);
 }
 
 .eye-button {
