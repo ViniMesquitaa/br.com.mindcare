@@ -1,4 +1,3 @@
-
 .container {
   display: flex;
   flex-direction: column;
@@ -6,13 +5,13 @@
   align-items: center;
   justify-content: center;
   padding: 3rem;
-  background-image: url('/public/fundo-cadastro-mobile.png');
-  background-size: cover; 
-  background-repeat: no-repeat; 
-  background-position: center; 
+  background-image: url("/public/fundo-cadastro-mobile.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.emaildasenha{
+.emaildasenha {
   max-width: 600px;
   text-align: center;
   width: 500px;
@@ -20,7 +19,6 @@
   border-radius: 10px 10px 10px 10px;
   background-color: #f8f7f2;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.473);
-
 }
 
 .codigoemail {
@@ -34,7 +32,6 @@
   border-radius: 10px 10px 10px 10px;
   background-color: #f8f7f2;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.473);
-  
 }
 
 .novasenha {
@@ -48,7 +45,6 @@
   border-radius: 10px 10px 10px 10px;
   background-color: #f8f7f2;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.473);
-  
 }
 
 .titulo {
@@ -57,7 +53,7 @@
   margin-bottom: 20px;
 }
 
-label {
+.label1 {
   display: block;
   text-align: left;
   margin-bottom: 5px;
@@ -66,7 +62,7 @@ label {
   font-size: 16px;
 }
 
-input {
+.inputs1 {
   width: 80%;
   padding: 8px;
   margin-bottom: 15px;
@@ -82,8 +78,8 @@ input {
   width: 7%;
   text-align: center;
 }
-button {
-  background-color: #687DAC;
+.botaozul {
+  background-color: #687dac;
   color: white;
   padding: 10px;
   border: none;
@@ -92,18 +88,23 @@ button {
   width: 200px;
   margin: 10px;
 }
-button:hover {
+.botaozul:hover {
   background-color: #365899;
 }
 .link {
-  font-size: 1.0em;
-  color: #4267B2;
+  font-size: 1em;
+  color: #4267b2;
   text-decoration: none;
 }
-.cancelar{
+.cancelar {
   background-color: #f8f7f2;
-  border: 1px solid #687DAC;
+  border: 1px solid #687dac;
+  border-radius: 4px;
+  padding: 10px;
   color: black;
+  cursor: pointer;
+  width: 200px;
+  margin: 10px;
 }
 
 .cancelar:hover {
@@ -144,18 +145,13 @@ button:hover {
 
   .emaildasenha {
     width: auto;
-
   }
 
   .codigoemail {
     width: auto;
-
   }
 
   .novasenha {
     width: 400px;
-
   }
-
-
 }
