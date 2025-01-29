@@ -1,8 +1,4 @@
 import { useState } from "react";
-<<<<<<< HEAD
-import { Eye, EyeClosed } from "lucide-react";
-=======
->>>>>>> e1bf089e257d2559a16f3843d9d7b5682e727eb3
 import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import { InputPassword } from "../../components/InputPassword";
@@ -45,7 +41,7 @@ const Login = () => {
   };
 
   const handleRegister = () => {
-    navigate("/");
+    navigate("/admins/register");
   };
 
   const handleFocus = (e) => {
