@@ -20,7 +20,7 @@ const Login = () => {
     };
     if (!email) {
       newErrors.email = "O Email é obrigatório!";
-    } else if (!isValidEmail.test(email)) {
+    } else if (!isValidEmail(email)) {
       newErrors.email = "Email inválido!";
     }
 

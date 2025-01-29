@@ -1,7 +1,9 @@
 import { useState } from "react";
-import "./styles.css";
 import { useNavigate } from "react-router";
 import { InputPassword } from "../../components/InputPassword";
+import { isValidEmail } from "../../utils/masks";
+
+import "./styles.css";
 
 export function PassRecover() {
   const navigate = useNavigate();
@@ -12,39 +14,65 @@ export function PassRecover() {
     password: "",
     confirmPassword: "",
   });
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const newErrors = {};
+
+    if (!email) {
+      newErrors.email = "O Email é obrigatório!";
+    } else if (!isValidEmail(email)) {
+      newErrors.email = "Email inválido!";
+    }
+
+    setErrors(newErrors);
+    return !newErrors.email;
+  };
+
   const handleEmailSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
-    setTimeout(() => setStep(2), 1000);
+    if (validate()) {
+      console.log(email);
+      setTimeout(() => setStep(2), 1000);
+    }
   };
+
   const handleCodeSubmit = (e) => {
     e.preventDefault();
     console.log(code);
     setTimeout(() => setStep(3), 1000);
   };
+
   const handlePasswordSubmit = (e) => {
     e.preventDefault();
     console.log(formPasswordsValues);
     setTimeout(() => navigate("/"), 1000);
   };
+
   return (
     <div className="containerpasswordrecover">
       {step === 1 && (
         <div className="caixaprincipal">
           <h1 className="titulo">Recuperar Senha</h1>
           <p className="paragrafo">Digite seu e-mail para redefinir a senha</p>
-          <form onSubmit={handleEmailSubmit}>
-            <label htmlFor="email" className="label1">
-              Email <span className="spanred">*</span>
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="inputs1"
-              required
-              onChange={(e) => setEmail(e.target.value)}
-            />
+          <form onSubmit={handleEmailSubmit} noValidate>
+            <div className="input-email">
+              <label htmlFor="email" className="label">
+                E-mail <small className="spanred">*</small>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className={`inputs ${errors.email ? "error" : ""}`}
+                placeholder="Digite seu e-mail"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              {errors.email && (
+                <span className="error-text">{errors.email}</span>
+              )}
+            </div>
             <button type="submit" className="botaozul">
               Enviar
             </button>
@@ -59,11 +87,11 @@ export function PassRecover() {
           </p>
           <form onSubmit={handleCodeSubmit}>
             <div className="code-inputs">
-              <input type="text" maxlength="1" className="inputs1" required />
-              <input type="text" maxlength="1" className="inputs1" required />
-              <input type="text" maxlength="1" className="inputs1" required />
-              <input type="text" maxlength="1" className="inputs1" required />
-              <input type="text" maxlength="1" className="inputs1" required />
+              <input type="text" maxlength="1" className="inputs" required />
+              <input type="text" maxlength="1" className="inputs" required />
+              <input type="text" maxlength="1" className="inputs" required />
+              <input type="text" maxlength="1" className="inputs" required />
+              <input type="text" maxlength="1" className="inputs" required />
             </div>
             <button type="submit" className="botaozul">
               Verificar código
@@ -89,8 +117,8 @@ export function PassRecover() {
                   password: e.target.value,
                 }))
               }
-              labelClassName="label1"
-              inputClassName="inputs1"
+              labelClassName="label"
+              inputClassName="inputs"
               errorClassName="error-message"
               toggleButtonClassName="toggle-button"
             />
@@ -105,8 +133,8 @@ export function PassRecover() {
                   confirmPassword: e.target.value,
                 }))
               }
-              labelClassName="label1"
-              inputClassName="inputs1"
+              labelClassName="label"
+              inputClassName="inputs"
               errorClassName="error-message"
               toggleButtonClassName="toggle-button"
             />
