@@ -1,0 +1,38 @@
+.tabs-container {
+  width: 100%;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #ddd;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s;
+}
+
+.tabs button:hover {
+  background: #f4f4f4;
+}
+
+.tabs button.active {
+  border-bottom: 3px solid #687dac;
+  font-weight: bold;
+}
+
+.tab-content {
+  padding: 20px;
+}
+
+.tab-pane {
+  display: flex;
+  flex-direction: column;
+}
