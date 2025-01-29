@@ -1,6 +1,6 @@
 :root {
-  --background-login-desktop: url(./assets/background-img-login.jpeg);
-  --background-login-mobile: url(./assets/background-img-login-responsive.png);
+  --background-login-desktop: url(./background-img-login.jpeg);
+  --background-login-mobile: url(./fundo-cadastro-mobile.png);
   --box-shadow: 0rem 0rem 0.25rem rgba(0, 0, 0, 0.4);
   --color-error: #ff0000;
 }
@@ -334,7 +334,7 @@
 
 @media (max-width: 767px) {
   .login-main {
-    background-image: url(./assets/background-img-login-responsive.png);
+    background-image: var(--background-login-mobile);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;

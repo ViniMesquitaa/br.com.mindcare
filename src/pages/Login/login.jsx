@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CircleUserRound, Eye, EyeClosed } from "lucide-react";
+import { Eye, EyeClosed } from "lucide-react";
 import { useNavigate } from "react-router";
 import "./styleLogin.css";
 
