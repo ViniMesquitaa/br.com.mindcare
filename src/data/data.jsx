@@ -77,7 +77,7 @@ export const ROWS_PATIENTS = [
     name: "Carlos Santos",
     dateBirth: "1978-11-30",
     medicalRecords: "112131",
-    status: "Ativo",
+    status: "Inativo",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
   {
@@ -93,7 +93,7 @@ export const ROWS_PATIENTS = [
     name: "Pedro Ferreira",
     dateBirth: "1995-12-18",
     medicalRecords: "718192",
-    status: "Ativo",
+    status: "Inativo",
     details: <UserRoundSearch color="#d2e0ee" />,
   },
 ];
