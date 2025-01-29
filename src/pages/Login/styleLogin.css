@@ -84,9 +84,13 @@
 }
 
 .esqueceu-senha-text {
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   font-size: 18px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .container-button {
@@ -146,13 +150,48 @@
   top: 1.5rem;
 }
 
+@media (max-width: 1919px) and (min-width: 1025px) {
+  .login-main {
+    background-image: var(--background-login-desktop);
+    background-size: cover;
+    background-position: center;
+    padding: 100px;
+  }
+
+  .esqueceu-senha-text {
+    font-size: 15px;
+    font-weight: 550;
+  }
+
+  .login-container {
+    padding: 20px;
+    gap: 20px;
+    width: 90%;
+    max-width: 500px;
+  }
+
+  .img-logo {
+    width: 400px;
+    height: 120px;
+  }
+
+  .button-login,
+  .button-cadastro {
+    font-size: 24px;
+    padding: 6px;
+  }
+
+  .label-login {
+    font-size: 18px;
+  }
+
+  .input-type {
+    font-size: 18px;
+  }
+}
+
 @media (max-width: 1024px) {
   .login-main {
-    background-image: var(--background-login-mobile);
-    justify-content: center;
-  }
-  .login-main {
-<<<<<<< HEAD
     background-image: var(--background-login-mobile);
     background-repeat: no-repeat;
     background-size: cover;
@@ -162,11 +201,44 @@
     max-width: 100%;
     width: 100%;
     height: 100vh;
-=======
-    padding: 16px;
->>>>>>> e1bf089e257d2559a16f3843d9d7b5682e727eb3
   }
+
   .img-logo {
     height: 150px;
   }
 }
+.esqueceu-senha-text {
+  font-size: 15px;
+  font-weight: 550;
+}
+
+@media (max-width: 768px) {
+  .login-main {
+    background-image: var(--background-login-mobile);
+    padding: 20px;
+  }
+
+  .img-logo {
+    height: 100px;
+  }
+
+  .button-login,
+  .button-cadastro {
+    font-size: 22px;
+    padding: 6px;
+  }
+
+  .label-login {
+    font-size: 18px;
+  }
+
+  .esqueceu-senha-text {
+    font-size: 16px;
+    font-weight: 550;
+  }
+
+  .input-type {
+    font-size: 18px;
+  }
+}
+
