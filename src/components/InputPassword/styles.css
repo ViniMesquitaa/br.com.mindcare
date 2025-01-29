@@ -1,0 +1,17 @@
+.password-container {
+  position: relative;
+}
+
+.toggle-button {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  right: 0.625rem;
+  top: 0.938rem;
+}
+
+.toggle-button .toggle-icon {
+  height: 1.3rem;
+  width: 1.3rem;
+  color: #84a29f;
+}
