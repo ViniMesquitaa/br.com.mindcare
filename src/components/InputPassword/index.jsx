@@ -10,6 +10,10 @@ export function InputPassword({
   onFocus,
   error,
   disabled = false,
+  labelClassName = "",
+  inputClassName = "",
+  errorClassName = "",
+  toggleButtonClassName = "",
 }) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -19,7 +23,7 @@ export function InputPassword({
 
   return (
     <div className="input-group">
-      <label htmlFor={name} className="input-label">
+      <label htmlFor={name} className={`${labelClassName}`}>
         {label} <small>*</small>
       </label>
       <div className="password-container">
@@ -31,12 +35,12 @@ export function InputPassword({
           disabled={disabled}
           value={value}
           onChange={onChange}
-          className={`input-field ${error ? "error" : ""}`}
+          className={`${inputClassName} ${error ? "error" : ""}`} // Classe dinâmica para o input
         />
         <button
           type="button"
           onClick={togglePasswordVisibility}
-          className="toggle-button"
+          className={toggleButtonClassName}
         >
           {showPassword ? (
             <Eye className="toggle-icon" />
@@ -45,7 +49,7 @@ export function InputPassword({
           )}
         </button>
       </div>
-      {error && <small className="error-message">{error}</small>}
+      {error && <small className={`${errorClassName}`}>{error}</small>}
     </div>
   );
 }

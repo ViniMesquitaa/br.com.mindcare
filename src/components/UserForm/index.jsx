@@ -455,6 +455,9 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
             value={formValues.password}
             onChange={handleInputChange}
             error={errors.password}
+            labelClassName="input-label"
+            inputClassName="input-field"
+            errorClassName="error-message"
           />
           <InputPassword
             label="Confirmação de senha"
@@ -464,6 +467,10 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
             onChange={handleInputChange}
             disabled={isAdminRegister}
             error={errors.confirmPassword}
+            labelClassName="input-label"
+            inputClassName="input-field"
+            errorClassName="error-message"
+            toggleButtonClassName="toggle-button"
           />
         </>
       )}

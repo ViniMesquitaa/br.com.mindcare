@@ -116,6 +116,14 @@
   font-size: var(--font-size-small);
 }
 
+.toggle-button {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  right: 0.625rem;
+  top: 0.938rem;
+}
+
 .input-row {
   gap: 1rem;
   display: flex;
