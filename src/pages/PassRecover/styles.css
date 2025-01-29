@@ -57,7 +57,7 @@
   margin-bottom: 20px;
 }
 
-label {
+.label1 {
   display: block;
   text-align: left;
   margin-bottom: 5px;
@@ -66,7 +66,7 @@ label {
   font-size: 16px;
 }
 
-input {
+.inputs1 {
   width: 80%;
   padding: 8px;
   margin-bottom: 15px;
@@ -82,7 +82,7 @@ input {
   width: 7%;
   text-align: center;
 }
-button {
+.botaozul {
   background-color: #687DAC;
   color: white;
   padding: 10px;
@@ -92,7 +92,7 @@ button {
   width: 200px;
   margin: 10px;
 }
-button:hover {
+.botaozul:hover {
   background-color: #365899;
 }
 .link {
@@ -103,7 +103,12 @@ button:hover {
 .cancelar{
   background-color: #f8f7f2;
   border: 1px solid #687DAC;
+  border-radius: 4px;
+  padding: 10px;
   color: black;
+  cursor: pointer;
+  width: 200px;
+  margin: 10px;
 }
 
 .cancelar:hover {

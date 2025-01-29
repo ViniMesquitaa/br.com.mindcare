@@ -9,7 +9,7 @@ import { PassRecover } from "./pages/PassRecover";
 function App() {
   const location = useLocation();
   const pathname = location.pathname;
-  const showHeader = pathname !== "/login" && pathname !== "/register";
+  const showHeader = pathname !== "/login" && pathname !== "/register" && pathname !== "/recoverpassword";
   return (
     <>
       {showHeader && <Header />}
@@ -17,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/admins/register" element={<RegisterAdmin />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/recoverpassword" element={<PassRecover />} />
       </Routes>
     </>
   );
