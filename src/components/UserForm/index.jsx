@@ -1,7 +1,7 @@
 import { CircleUserRound } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
-import { userTypes } from "../../utils/constants";
+import { MOCK_USERS, userTypes } from "../../utils/constants";
 import { generateRandomPassword } from "../../utils/generateRandomPassword";
 import {
   birthDateMask,
@@ -17,9 +17,11 @@ import {
 import { InputPassword } from "../InputPassword";
 import { fetchAddressByCep } from "../../service/addressService";
 import "./styles.css";
+import { useParams } from "react-router";
 
 export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
   const [formValues, setFormValues] = useState({
+    id: "",
     photo: null,
     fullName: "",
     cpf: "",
@@ -32,12 +34,13 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
     city: "",
     state: "",
     houseNumber: "",
+    complement: "",
     password: "",
     confirmPassword: "",
     userType: "",
+    status: "",
     ...defaultValues,
   });
-
   const [photoPreview, setPhotoPreview] = useState(null);
   const [errors, setErrors] = useState({});
 
@@ -47,6 +50,10 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
     () => (isAdminRegister ? userTypes.admin : userTypes.common),
     [isAdminRegister]
   );
+  const { id: urlUserId } = useParams();
+  const loggedUser = MOCK_USERS[0];
+
+  const isUserLogged = urlUserId === loggedUser.id;
 
   const validate = () => {
     const newErrors = {};
@@ -149,6 +156,12 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
     }
   };
 
+  const toggleUserStatus = () => {
+    defaultValues.status === "1"
+      ? console.log("usuário desativado com sucesso")
+      : console.log("usuário ativado com sucesso");
+  };
+
   useEffect(() => {
     if (isAdminRegister) {
       const randomPassword = generateRandomPassword();
@@ -161,12 +174,25 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
     if (defaultValues) {
       setFormValues((prev) => ({
         ...prev,
+        id: defaultValues.id || "",
         fullName: defaultValues.fullName || "",
+        cpf: defaultValues.cpf || "",
+        birthDate: defaultValues.birthDate || "",
         phone: defaultValues.phone || "",
         email: defaultValues.email || "",
-        address: defaultValues.address || "",
-        photo: defaultValues.photoUrl || null,
+        cep: defaultValues.cep || "",
+        street: defaultValues.street || "",
+        neighborhood: defaultValues.neighborhood || "",
+        city: defaultValues.city || "",
+        state: defaultValues.state || "",
+        houseNumber: defaultValues.houseNumber || "",
+        complement: defaultValues.complement || "",
+        password: defaultValues.password || "",
+        confirmPassword: defaultValues.confirmPassword || "",
+        userType: defaultValues.userType || "",
+        status: defaultValues.state || "",
       }));
+      setPhotoPreview(defaultValues.photo || null);
     }
     if (debouncedCep && isValidCep(debouncedCep)) {
       fetchAddressByCep(debouncedCep)
@@ -205,9 +231,10 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
             name="file"
             type="file"
             className="file-input"
+            disabled={!isUserLogged}
             onChange={handleFileChange}
           />
-          <span>Selecione uma imagem</span>
+          {isUserLogged && <span>Selecione uma imagem</span>}
         </label>
       </section>
       <section className="form-section">
@@ -220,6 +247,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
             id="fullName"
             name="fullName"
             onFocus={handleFocus}
+            disabled={!isUserLogged}
             value={formValues.fullName}
             onChange={handleInputChange}
             placeholder="Digite seu nome completo"
@@ -238,9 +266,10 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               type="text"
               id="cpf"
               name="cpf"
-              maxlength="14"
+              maxLength="14"
               onFocus={handleFocus}
               value={formValues.cpf}
+              disabled={!isUserLogged}
               onChange={handleInputChange}
               placeholder="Digite seu CPF."
               className={`input-field ${errors.cpf ? "error" : ""}`}
@@ -257,8 +286,9 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               type="text"
               id="birthDate"
               name="birthDate"
-              maxlength="10"
+              maxLength="10"
               onFocus={handleFocus}
+              disabled={!isUserLogged}
               value={formValues.birthDate}
               onChange={handleInputChange}
               placeholder="Informe sua data de nascimento."
@@ -279,6 +309,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               id="email"
               name="email"
               onFocus={handleFocus}
+              disabled={!isUserLogged}
               value={formValues.email}
               onChange={handleInputChange}
               placeholder="Digite seu e-mail."
@@ -297,6 +328,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               id="phone"
               name="phone"
               onFocus={handleFocus}
+              disabled={!isUserLogged}
               value={formValues.phone}
               onChange={handleInputChange}
               placeholder="Digite seu telefone com DDD."
@@ -318,10 +350,11 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               type="text"
               id="cep"
               name="cep"
-              maxlength="9"
+              maxLength="9"
               placeholder="Digite seu CEP."
               onFocus={handleFocus}
               value={formValues.cep}
+              disabled={!isUserLogged}
               onChange={handleInputChange}
               className={`input-field ${errors.cep ? "error" : ""}`}
             />
@@ -398,22 +431,24 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               type="text"
               id="houseNumber"
               name="houseNumber"
+              disabled={!isUserLogged}
               placeholder="Digite o número do endereço."
               value={formValues.houseNumber}
               onChange={handleInputChange}
               className="input-field"
             />
           </div>
-          <div className="input-group complemento-group">
-            <label htmlFor="complemento" className="input-label">
+          <div className="input-group">
+            <label htmlFor="complement" className="input-label">
               Complemento:
             </label>
             <input
               type="text"
-              id="complemento"
-              name="complemento"
-              placeholder="Complemento"
-              value={formValues.complemento}
+              id="complement"
+              name="complement"
+              placeholder="Digite um complemento (opcional)."
+              disabled={!isUserLogged}
+              value={formValues.complement}
               onChange={handleInputChange}
               className="input-field"
             />
@@ -430,6 +465,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
           name="userType"
           onFocus={handleFocus}
           value={formValues.userType}
+          disabled={!isUserLogged}
           onChange={handleInputChange}
           className={`input-field ${errors.userType ? "error" : ""}`}
         >
@@ -476,9 +512,19 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
           />
         </>
       )}
-      <button type="submit" className="submit-button">
-        {isEdit ? "Editar" : "Cadastrar"}
-      </button>
+      {isUserLogged ? (
+        <button type="submit" className="submit-button">
+          {isEdit ? "Editar" : "Cadastrar"}
+        </button>
+      ) : (
+        <button
+          type="button"
+          className="submit-button"
+          onClick={() => toggleUserStatus()}
+        >
+          {defaultValues?.status === "1" ? "Desativar" : "Ativar"}
+        </button>
+      )}
     </form>
   );
 }

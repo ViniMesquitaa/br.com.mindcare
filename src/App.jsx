@@ -5,6 +5,7 @@ import Login from "./pages/Login/login";
 import { RegisterAdmin } from "./pages/RegisterAdmin";
 import { Header } from "./components/Header";
 import { PassRecover } from "./pages/PassRecover";
+import { AdminProfile } from "./pages/AdminProfile";
 
 function App() {
   const location = useLocation();
@@ -13,6 +14,7 @@ function App() {
     pathname !== "/login" &&
     pathname !== "/register" &&
     pathname !== "/recoverpassword";
+
   return (
     <>
       {showHeader && <Header />}
@@ -21,6 +23,7 @@ function App() {
         <Route path="/admins/register" element={<RegisterAdmin />} />
         <Route path="/login" element={<Login />} />
         <Route path="/recoverpassword" element={<PassRecover />} />
+        <Route path="/admin/profile/:id" element={<AdminProfile />} />
       </Routes>
     </>
   );

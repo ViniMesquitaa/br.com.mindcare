@@ -41,7 +41,7 @@ const Login = () => {
   };
 
   const handleRegister = () => {
-    navigate("/");
+    navigate("/admins/register");
   };
 
   const handleFocus = (e) => {
