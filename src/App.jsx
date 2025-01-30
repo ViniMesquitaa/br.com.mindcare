@@ -13,8 +13,8 @@ function App() {
   const showHeader =
     pathname !== "/login" &&
     pathname !== "/register" &&
-    pathname !== "/recoverpassword" &&
-    pathname !== "/admins/register";
+    pathname !== "/recoverpassword";
+
   return (
     <>
       {showHeader && <Header />}
