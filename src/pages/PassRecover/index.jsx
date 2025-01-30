@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { InputPassword } from "../../components/InputPassword";
 import { isValidEmail } from "../../utils/masks";
 
@@ -15,6 +15,7 @@ export function PassRecover() {
     confirmPassword: "",
   });
   const [errors, setErrors] = useState({});
+  const validCode = "12345";
 
   const validate = () => {
     const newErrors = {};
@@ -37,9 +38,27 @@ export function PassRecover() {
     }
   };
 
+  const handleCodeChange = (index, value) => {
+    if (/[^0-9]/.test(value)) return;
+    const newCode = [...code];
+    newCode[index] = value;
+    setCode(newCode);
+    if (value && index < 4)
+      document.getElementById(`code-${index + 1}`).focus();
+  };
+
   const handleCodeSubmit = (e) => {
     e.preventDefault();
-    console.log(code);
+    const enteredCode = code.join("").trim();
+    if (!enteredCode) {
+      setErrors({ code: "Código é obrigatório." });
+      return;
+    }
+    if (enteredCode !== validCode) {
+      setErrors({ code: "Código inválido. Tente novamente." });
+      return;
+    }
+    setErrors({});
     setTimeout(() => setStep(3), 1000);
   };
 
@@ -85,22 +104,37 @@ export function PassRecover() {
           <p className="paragrafo">
             Digite o código de 5 dígitos mencionado no e-mail
           </p>
-          <form onSubmit={handleCodeSubmit}>
-            <div className="code-inputs">
-              <input type="text" maxlength="1" className="inputs" required />
-              <input type="text" maxlength="1" className="inputs" required />
-              <input type="text" maxlength="1" className="inputs" required />
-              <input type="text" maxlength="1" className="inputs" required />
-              <input type="text" maxlength="1" className="inputs" required />
+          <form onSubmit={handleCodeSubmit} noValidate>
+            <div className="input-email">
+              <div className="code-inputs">
+                {code.map((char, index) => (
+                  <input
+                    id={`code-${index}`}
+                    key={index}
+                    type="text"
+                    maxLength="1"
+                    className={`inputs ${errors.code ? "error" : ""}`}
+                    required
+                    value={char}
+                    onChange={(e) => handleCodeChange(index, e.target.value)}
+                  />
+                ))}
+              </div>
+              {errors.code && <span className="error-code">{errors.code}</span>}
             </div>
             <button type="submit" className="botaozul">
               Verificar código
             </button>
           </form>
-          <p>Ainda não recebeu o email ?</p>{" "}
-          <a href="#" className="link">
-            Reenviar e-mail
-          </a>
+          <div className="footer">
+            <p>Ainda não recebeu o email?</p>
+            <span
+              className="link"
+              onClick={() => console.log("novo código enviado por email")}
+            >
+              Reenviar e-mail
+            </span>
+          </div>
         </div>
       )}
       {step === 3 && (

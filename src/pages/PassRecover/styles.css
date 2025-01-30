@@ -17,9 +17,9 @@
   max-width: 600px;
   text-align: center;
   width: 100%;
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 4px;
   background-color: #f8f7f2;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.473);
+  box-shadow: 0rem 0rem 0.25rem rgba(0, 0, 0, 0.4);
   padding: 32px;
 }
 
@@ -51,6 +51,15 @@
   justify-content: center;
   gap: 10px;
 }
+.error-code {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  color: #f00;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .code-inputs input {
   width: 7%;
   text-align: center;
@@ -69,10 +78,15 @@
 .botaozul:hover {
   transform: scale(1.01);
 }
+
+a {
+  text-decoration: none;
+}
+
 .link {
   font-size: 1em;
   color: #4267b2;
-  text-decoration: none;
+  cursor: pointer;
 }
 .cancelar {
   background-color: #f8f7f2;
@@ -88,9 +102,7 @@
 .cancelar:hover {
   background-color: white;
 }
-.link:hover {
-  text-decoration: underline;
-}
+
 .requirements {
   margin-left: 10%;
   text-align: left;
@@ -108,7 +120,7 @@
   margin: 10px;
 }
 
-.spanred {
+.label small {
   color: red;
 }
 
@@ -116,6 +128,13 @@
   margin-bottom: 16px;
 }
 
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 16px;
+}
 @media (max-width: 620px) {
   .containerpasswordrecover {
     padding: 1rem;
