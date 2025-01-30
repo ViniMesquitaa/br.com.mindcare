@@ -1,9 +1,9 @@
 import { MOCK_USERS } from "../../utils/constants";
-import { SearchProfessionals } from "../SearchProfessionals";
+import { SearchPatients } from "../SearchPatients";
 
 const Home = () => {
   const loggedUser = MOCK_USERS[4];
-  return <div>{loggedUser?.tipoUsuario && <SearchProfessionals />}</div>;
+  return <div>{loggedUser?.tipoUsuario && <SearchPatients />}</div>;
 };
 
 export default Home;
