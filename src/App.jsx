@@ -20,10 +20,10 @@ function App() {
       {showHeader && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/admins/register" element={<RegisterAdmin />} />
+        <Route path="/admin/register" element={<RegisterAdmin />} />
         <Route path="/login" element={<Login />} />
         <Route path="/recoverpassword" element={<PassRecover />} />
-        <Route path="/admin/profile/:id" element={<AdminProfile />} />
+        <Route path="/admin/:id" element={<AdminProfile />} />
       </Routes>
     </>
   );
