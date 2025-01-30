@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "../../components/Table";
 import { MOCK_USERS } from "../../utils/constants";
+import { generateDate } from "../../utils/generateBirthDate";
 
 import "./styles.css";
 
@@ -30,18 +31,9 @@ export function SearchProfessionals() {
     { name: "details", label: "Detalhes" },
   ];
 
-  const generateBirthDate = () => {
-    const start = new Date(1980, 0, 1);
-    const end = new Date(2000, 11, 31);
-    const randomDate = new Date(
-      start.getTime() + Math.random() * (end.getTime() - start.getTime())
-    );
-    return randomDate.toISOString().split("T")[0];
-  };
-
   const mock = Array.from({ length: 10 }, (_, index) => ({
     id: index + 1,
-    birthDate: generateBirthDate(),
+    birthDate: generateDate(),
     name: `Jonh Doe ${index + 1}`,
     email: `user${index + 1}@example.com`,
     medicalRecords: `123456789${index + 1}`,
@@ -176,16 +168,14 @@ export function SearchProfessionals() {
             Buscar
           </button>
         </form>
-        <div className="search-professionals-table">
-          <Table
-            columns={COLUMNS}
-            rows={ROWS}
-            page={page}
-            size={10}
-            totalItems={mock.length}
-            onPaginate={handlePaginate}
-          />
-        </div>
+        <Table
+          columns={COLUMNS}
+          rows={ROWS}
+          page={page}
+          size={10}
+          totalItems={mock.length}
+          onPaginate={handlePaginate}
+        />
       </div>
     </div>
   );

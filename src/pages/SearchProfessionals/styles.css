@@ -113,8 +113,4 @@
   .search-professionals-submit_button {
     grid-column: span 1;
   }
-
-  .search-professionals-table {
-    overflow-x: auto;
-  }
 }

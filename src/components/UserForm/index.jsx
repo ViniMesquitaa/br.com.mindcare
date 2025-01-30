@@ -52,7 +52,7 @@ export function UserForm({ isAdmin, defaultValues, onSubmit }) {
   );
 
   const { id: urlUserId } = useParams();
-  const loggedUser = MOCK_USERS[0];
+  const loggedUser = MOCK_USERS[3];
   const isUserLogged = urlUserId === loggedUser.id;
   const isEditing = Boolean(defaultValues);
   const isActive = defaultValues?.status === "1";
@@ -523,15 +523,18 @@ export function UserForm({ isAdmin, defaultValues, onSubmit }) {
           </button>
         )}
 
-        {isEditing && !isUserLogged && (
-          <button
-            type="button"
-            className="submit-button"
-            onClick={toggleUserStatus}
-          >
-            {isActive ? "Desativar" : "Ativar"}
-          </button>
-        )}
+        {
+          (isEditing && !isUserLogged && loggedUser?.tipoUsuario === "1",
+          loggedUser?.tipoUsuario === "2" && (
+            <button
+              type="button"
+              className="submit-button"
+              onClick={toggleUserStatus}
+            >
+              {isActive ? "Desativar" : "Ativar"}
+            </button>
+          ))
+        }
       </div>
     </form>
   );
