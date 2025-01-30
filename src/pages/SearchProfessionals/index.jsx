@@ -7,66 +7,57 @@ import { generateDate } from "../../utils/generateBirthDate";
 
 import "./styles.css";
 
-const loggedUser = MOCK_USERS[4];
+const loggedUser = MOCK_USERS[2];
 
-export function SearchPatients() {
+export function SearchProfessionals() {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [filterData, setFilterData] = useState({
+    professionalRecord: "",
     name: "",
-    birthDate: "",
+    phone: "",
     email: "",
-    record: "",
-    diagnosis: "",
-    status: "",
+    specialty: "",
+    ageRange: "",
+    freeSessionsCount: "",
   });
 
   const COLUMNS = [
+    { name: "professionalRecord", label: "Registro Profissional" },
     { name: "name", label: "Nome" },
-    { name: "birthDate", label: "Data de nascimento" },
+    { name: "phone", label: "Telefone" },
     { name: "email", label: "Email" },
-    { name: "medicalRecords", label: "Prontuário" },
-    { name: "diagnosis", label: "Diagnóstico" },
-    { name: "status", label: "Status" },
+    { name: "Specialty", label: "Especialidade" },
+    { name: "ageRange", label: "Faixa Etária" },
+    { name: "freeSessionsCount", label: "Qtd. Atend. Grat." },
     { name: "details", label: "Detalhes" },
   ];
 
   const mock = Array.from({ length: 10 }, (_, index) => ({
     id: index + 1,
-    birthDate: generateDate(),
+    professionalRecord: index + 1,
+    phone: `(00) 00000-000${index}`,
     name: `Jonh Doe ${index + 1}`,
     email: `user${index + 1}@example.com`,
-    medicalRecords: `123456789${index + 1}`,
-    diagnosis: `Diagnosis ${index + 1}`,
-    status: index % 2 === 0 ? "Ativo" : "Inativo",
+    specialty: `Specialty ${index}`,
+    ageRange: "Adulto",
+    freeSessionsCount: 100,
   }));
 
   const ROWS = useMemo(() => {
     return (
-      mock?.map((pacient) => ({
-        name: pacient?.name,
-        birthDate: pacient?.birthDate,
-        email: pacient?.email,
-        medicalRecords: pacient?.medicalRecords,
-        diagnosis: pacient?.diagnosis,
-        status: (
-          <span
-            className={`search-professionals-status ${
-              pacient?.status === "Ativo" ? "active" : "inactive"
-            }`}
-          >
-            <Circle
-              strokeWidth={0}
-              fill={pacient?.status === "Ativo" ? "green" : "red"}
-              size="10"
-            />
-            {pacient?.status}
-          </span>
-        ),
+      mock?.map((professional) => ({
+        professionalRecord: professional?.professionalRecord,
+        name: professional?.name,
+        phone: professional?.phone,
+        email: professional?.email,
+        Specialty: professional?.specialty,
+        ageRange: professional?.ageRange,
+        freeSessionsCount: professional?.freeSessionsCount,
         details: (
           <UserRoundSearch
             className="search-professionals-details"
-            onClick={() => navigate(`/pacient/${pacient?.id}`)}
+            onClick={() => navigate(`/professional/${professional?.id}`)}
           />
         ),
       })) || []
@@ -92,9 +83,20 @@ export function SearchPatients() {
 
   return (
     <div className="search_professionals_container">
-      <span className="search-professionals-welcome_message">{`Olá, Seja bem-vindo(a), ${loggedUser?.nome}!`}</span>
+      <span className="search-professionals-welcome_message">{`Olá, ${loggedUser?.nome}, como você está se sentindo hoje?`}</span>
       <div className="search-professionals-table_container">
         <form onSubmit={handleSubmit} className="search-professionals-filter">
+          <div className="search-professionals-filter_group">
+            <label htmlFor="name">Registro Profissional</label>
+            <input
+              type="text"
+              id="professionalRecord"
+              name="professionalRecord"
+              value={filterData.professionalRecord}
+              onChange={handleChange}
+            />
+          </div>
+
           <div className="search-professionals-filter_group">
             <label htmlFor="name">Nome</label>
             <input
@@ -107,12 +109,12 @@ export function SearchPatients() {
           </div>
 
           <div className="search-professionals-filter_group">
-            <label htmlFor="birthDate">Data de Nascimento</label>
+            <label htmlFor="record">Telefone</label>
             <input
-              type="date"
-              id="birthDate"
-              name="birthDate"
-              value={filterData.birthDate}
+              type="tel"
+              id="phone"
+              name="phone"
+              value={filterData.phone}
               onChange={handleChange}
             />
           </div>
@@ -129,39 +131,39 @@ export function SearchPatients() {
           </div>
 
           <div className="search-professionals-filter_group">
-            <label htmlFor="record">Prontuário</label>
+            <label htmlFor="diagnosis">Especialidade</label>
             <input
               type="text"
-              id="record"
-              name="record"
-              value={filterData.record}
+              id="specialty"
+              name="specialty"
+              value={filterData.specialty}
               onChange={handleChange}
             />
           </div>
 
           <div className="search-professionals-filter_group">
-            <label htmlFor="diagnosis">Diagnóstico</label>
-            <input
-              type="text"
-              id="diagnosis"
-              name="diagnosis"
-              value={filterData.diagnosis}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="search-professionals-filter_group">
-            <label htmlFor="status">Status</label>
+            <label htmlFor="ageRange">Faixa Etária</label>
             <select
-              id="status"
+              id="ageRange"
               name="status"
-              value={filterData.status}
+              value={filterData.ageRange}
               onChange={handleChange}
             >
-              <option value="">Select</option>
-              <option value="active">Ativo</option>
-              <option value="inactive">Inativo</option>
+              <option value="">Adulto</option>
+              <option value="active">Adolescente</option>
+              <option value="inactive">Idoso</option>
             </select>
+          </div>
+
+          <div className="search-professionals-filter_group">
+            <label htmlFor="freeSessionsCount">Qtd. Atend. Grat.</label>
+            <input
+              type="number"
+              id="freeSessionsCount"
+              name="freeSessionsCount"
+              value={filterData.freeSessionsCount}
+              onChange={handleChange}
+            />
           </div>
 
           <button type="submit" className="search-professionals-submit_button">
