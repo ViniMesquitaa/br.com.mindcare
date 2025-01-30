@@ -17,7 +17,7 @@ import {
 import { InputPassword } from "../InputPassword";
 import { fetchAddressByCep } from "../../service/addressService";
 import "./styles.css";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 
 export function UserForm({ isAdminRegister, defaultValues, onSubmit }) {
   const [formValues, setFormValues] = useState({

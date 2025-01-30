@@ -7,12 +7,13 @@ import {
   UserRoundCog,
 } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { MOCK_USERS } from "../../utils/constants";
 import { getFirstAndSecondName } from "../../utils/getFirstAndSecondName";
 import { getLink } from "../../utils/getLink";
 
 import "./styles.css";
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   const [activePage, setActivePage] = useState("/");
@@ -44,6 +45,7 @@ export const Header = () => {
 
   const menuItems = [
     { label: "Home", href: "/" },
+    { label: "AdminHome", href: "/adminhome" },
     { label: "Administradores", href: "/admin" },
     { label: "Profissionais", href: "/professional" },
     { label: "Pacientes", href: "/patient" },
@@ -56,9 +58,9 @@ export const Header = () => {
       </a>
       <nav className="menu">
         {menuItems.map(({ label, href }) => (
-          <Link to={href} className="menu-item">
+          <NavLink key={href} to={href} className="menu-item">
             {label}
-          </Link>
+          </NavLink>
         ))}
       </nav>
       <nav className="icon-container">

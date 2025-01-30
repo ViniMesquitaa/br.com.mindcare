@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { InputPassword } from "../../components/InputPassword";
 import { isValidEmail } from "../../utils/masks";
 

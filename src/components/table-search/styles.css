@@ -1,0 +1,10 @@
+.table-header-search {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.table-header-search button {
+  background-color: #687dac;
+}
