@@ -126,6 +126,12 @@
   justify-content: space-between;
 }
 
+.buttons_container {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
 .submit-button {
   background-color: var(--color-primary);
   color: var(--color-bg);
@@ -136,7 +142,7 @@
 }
 
 .submit-button:hover {
-  background-color: var(--color-primary-hover);
+  transform: scale(1.01);
 }
 
 @media (max-width: 425px) {

@@ -1,7 +1,7 @@
 import { CircleUserRound } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
-import { MOCK_USERS, userTypes } from "../../utils/constants";
+import { MOCK_USERS, USER_TYPES } from "../../utils/constants";
 import { generateRandomPassword } from "../../utils/generateRandomPassword";
 import {
   birthDateMask,
@@ -19,7 +19,7 @@ import { fetchAddressByCep } from "../../service/addressService";
 import "./styles.css";
 import { useParams } from "react-router-dom";
 
-export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
+export function UserForm({ isAdminRegister, defaultValues, onSubmit }) {
   const [formValues, setFormValues] = useState({
     id: "",
     photo: null,
@@ -47,13 +47,15 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
   const debouncedCep = useDebounce(formValues.cep, 500);
 
   const userTypeOptions = useMemo(
-    () => (isAdminRegister ? userTypes.admin : userTypes.common),
+    () => (isAdminRegister ? USER_TYPES.admin : USER_TYPES.common),
     [isAdminRegister]
   );
+
   const { id: urlUserId } = useParams();
   const loggedUser = MOCK_USERS[0];
-
   const isUserLogged = urlUserId === loggedUser.id;
+  const isEditing = Boolean(defaultValues);
+  const isActive = defaultValues?.status === "1";
 
   const validate = () => {
     const newErrors = {};
@@ -92,13 +94,13 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
       newErrors.cep = "CEP inválido";
     }
 
-    if (!formValues.password.trim() && !isEdit) {
+    if (!formValues.password.trim() && !defaultValues) {
       newErrors.password = "Senha é obrigatória";
-    } else if (formValues.password.length < 8 && !isEdit) {
+    } else if (formValues.password.length < 8 && !defaultValues) {
       newErrors.password = "A senha deve ter pelo menos 8 caracteres";
     }
 
-    if (!formValues.confirmPassword && !isEdit) {
+    if (!formValues.confirmPassword && !defaultValues) {
       newErrors.confirmPassword = "Confirmação de senha é obrigatória";
     }
 
@@ -231,10 +233,10 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
             name="file"
             type="file"
             className="file-input"
-            disabled={!isUserLogged}
+            disabled={!isUserLogged && isEditing}
             onChange={handleFileChange}
           />
-          {isUserLogged && <span>Selecione uma imagem</span>}
+          {(isUserLogged || !isEditing) && <span>Selecione uma imagem</span>}
         </label>
       </section>
       <section className="form-section">
@@ -247,7 +249,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
             id="fullName"
             name="fullName"
             onFocus={handleFocus}
-            disabled={!isUserLogged}
+            disabled={!isUserLogged && isEditing}
             value={formValues.fullName}
             onChange={handleInputChange}
             placeholder="Digite seu nome completo"
@@ -269,7 +271,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               maxLength="14"
               onFocus={handleFocus}
               value={formValues.cpf}
-              disabled={!isUserLogged}
+              disabled={!isUserLogged && isEditing}
               onChange={handleInputChange}
               placeholder="Digite seu CPF."
               className={`input-field ${errors.cpf ? "error" : ""}`}
@@ -288,7 +290,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               name="birthDate"
               maxLength="10"
               onFocus={handleFocus}
-              disabled={!isUserLogged}
+              disabled={!isUserLogged && isEditing}
               value={formValues.birthDate}
               onChange={handleInputChange}
               placeholder="Informe sua data de nascimento."
@@ -309,7 +311,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               id="email"
               name="email"
               onFocus={handleFocus}
-              disabled={!isUserLogged}
+              disabled={!isUserLogged && isEditing}
               value={formValues.email}
               onChange={handleInputChange}
               placeholder="Digite seu e-mail."
@@ -328,7 +330,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               id="phone"
               name="phone"
               onFocus={handleFocus}
-              disabled={!isUserLogged}
+              disabled={!isUserLogged && isEditing}
               value={formValues.phone}
               onChange={handleInputChange}
               placeholder="Digite seu telefone com DDD."
@@ -354,7 +356,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               placeholder="Digite seu CEP."
               onFocus={handleFocus}
               value={formValues.cep}
-              disabled={!isUserLogged}
+              disabled={!isUserLogged && isEditing}
               onChange={handleInputChange}
               className={`input-field ${errors.cep ? "error" : ""}`}
             />
@@ -431,7 +433,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               type="text"
               id="houseNumber"
               name="houseNumber"
-              disabled={!isUserLogged}
+              disabled={!isUserLogged && isEditing}
               placeholder="Digite o número do endereço."
               value={formValues.houseNumber}
               onChange={handleInputChange}
@@ -447,7 +449,7 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
               id="complement"
               name="complement"
               placeholder="Digite um complemento (opcional)."
-              disabled={!isUserLogged}
+              disabled={!isUserLogged && isEditing}
               value={formValues.complement}
               onChange={handleInputChange}
               className="input-field"
@@ -456,31 +458,35 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
         </div>
       </section>
 
-      <div className="input-group">
-        <label htmlFor="userType" className="input-label">
-          Tipo de Usuário <small>*</small>
-        </label>
-        <select
-          id="userType"
-          name="userType"
-          onFocus={handleFocus}
-          value={formValues.userType}
-          disabled={!isUserLogged}
-          onChange={handleInputChange}
-          className={`input-field ${errors.userType ? "error" : ""}`}
-        >
-          <option value="">Selecione o tipo de usuário</option>
-          {userTypeOptions.map(({ label, id }) => (
-            <option key={id} value={id}>
-              {label}
-            </option>
-          ))}
-        </select>
-        {errors.userType && (
-          <small className="error-message">{errors.userType}</small>
-        )}
-      </div>
-      {isEdit || isAdminRegister ? (
+      {isEditing && loggedUser?.tipoUsuario === "1" ? (
+        <div className="input-group">
+          <label htmlFor="userType" className="input-label">
+            Tipo de Usuário <small>*</small>
+          </label>
+          <select
+            id="userType"
+            name="userType"
+            onFocus={handleFocus}
+            value={formValues.userType}
+            onChange={handleInputChange}
+            className={`input-field ${errors.userType ? "error" : ""}`}
+          >
+            <option value="">Selecione o tipo de usuário</option>
+            {userTypeOptions.map(({ label, id }) => (
+              <option key={id} value={id}>
+                {label}
+              </option>
+            ))}
+          </select>
+          {errors.userType && (
+            <small className="error-message">{errors.userType}</small>
+          )}
+        </div>
+      ) : (
+        <></>
+      )}
+
+      {isEditing || isAdminRegister ? (
         <></>
       ) : (
         <>
@@ -512,19 +518,23 @@ export function UserForm({ isAdminRegister, isEdit, defaultValues, onSubmit }) {
           />
         </>
       )}
-      {isUserLogged ? (
-        <button type="submit" className="submit-button">
-          {isEdit ? "Editar" : "Cadastrar"}
-        </button>
-      ) : (
-        <button
-          type="button"
-          className="submit-button"
-          onClick={() => toggleUserStatus()}
-        >
-          {defaultValues?.status === "1" ? "Desativar" : "Ativar"}
-        </button>
-      )}
+      <div className="buttons_container">
+        {(loggedUser?.tipoUsuario === "1" || !isEditing) && (
+          <button type="submit" className="submit-button">
+            {isEditing ? "Editar" : "Cadastrar"}
+          </button>
+        )}
+
+        {isEditing && !isUserLogged && (
+          <button
+            type="button"
+            className="submit-button"
+            onClick={toggleUserStatus}
+          >
+            {isActive ? "Desativar" : "Ativar"}
+          </button>
+        )}
+      </div>
     </form>
   );
 }
