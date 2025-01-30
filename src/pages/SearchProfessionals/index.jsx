@@ -8,7 +8,7 @@ import "./styles.css";
 
 const loggedUser = MOCK_USERS[4];
 
-export function SearchProfessionals() {
+export function SearchPatients() {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [filterData, setFilterData] = useState({
