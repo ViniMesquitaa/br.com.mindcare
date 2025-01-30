@@ -19,7 +19,7 @@ import { fetchAddressByCep } from "../../service/addressService";
 import "./styles.css";
 import { useParams } from "react-router-dom";
 
-export function UserForm({ isAdminRegister, defaultValues, onSubmit }) {
+export function UserForm({ isAdmin, defaultValues, onSubmit }) {
   const [formValues, setFormValues] = useState({
     id: "",
     photo: null,
@@ -47,8 +47,8 @@ export function UserForm({ isAdminRegister, defaultValues, onSubmit }) {
   const debouncedCep = useDebounce(formValues.cep, 500);
 
   const userTypeOptions = useMemo(
-    () => (isAdminRegister ? USER_TYPES.admin : USER_TYPES.common),
-    [isAdminRegister]
+    () => (isAdmin ? USER_TYPES.admin : USER_TYPES.common),
+    [isAdmin]
   );
 
   const { id: urlUserId } = useParams();
@@ -165,7 +165,7 @@ export function UserForm({ isAdminRegister, defaultValues, onSubmit }) {
   };
 
   useEffect(() => {
-    if (isAdminRegister) {
+    if (isAdmin) {
       const randomPassword = generateRandomPassword();
       setFormValues((prev) => ({
         ...prev,
@@ -212,7 +212,7 @@ export function UserForm({ isAdminRegister, defaultValues, onSubmit }) {
           setErrors({ cep: error.message });
         });
     }
-  }, [isAdminRegister, defaultValues, debouncedCep]);
+  }, [isAdmin, defaultValues, debouncedCep]);
 
   return (
     <form onSubmit={handleSubmit} className="form" noValidate>
@@ -486,7 +486,7 @@ export function UserForm({ isAdminRegister, defaultValues, onSubmit }) {
         <></>
       )}
 
-      {isEditing || isAdminRegister ? (
+      {isEditing || isAdmin ? (
         <></>
       ) : (
         <>
@@ -494,7 +494,6 @@ export function UserForm({ isAdminRegister, defaultValues, onSubmit }) {
             label="Senha"
             name="password"
             onFocus={handleFocus}
-            disabled={isAdminRegister}
             value={formValues.password}
             onChange={handleInputChange}
             error={errors.password}
@@ -509,7 +508,6 @@ export function UserForm({ isAdminRegister, defaultValues, onSubmit }) {
             onFocus={handleFocus}
             value={formValues.confirmPassword}
             onChange={handleInputChange}
-            disabled={isAdminRegister}
             error={errors.confirmPassword}
             labelClassName="input-label"
             inputClassName="input-field"

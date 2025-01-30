@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { CircleUserRound, Eye, EyeClosed } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { InputPassword } from "../../components/InputPassword";
 import { isValidEmail } from "../../utils/masks";
 

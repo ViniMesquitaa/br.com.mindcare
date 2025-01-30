@@ -30,7 +30,7 @@ export function AdminProfile() {
     <section className="admin-profile-container">
       <div className="admin-profile-content">
         <UserForm
-          isAdminRegister
+          isAdmin
           onSubmit={handleSubmit}
           defaultValues={defaultValues}
         />
