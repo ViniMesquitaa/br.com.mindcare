@@ -14,6 +14,13 @@ export function PassRecover() {
     password: "",
     confirmPassword: "",
   });
+  const [passwordStrength, setPasswordStrength] = useState({
+    minLength: false,
+    hasUpperCase: false,
+    hasLowerCase: false,
+    hasNumber: false,
+    hasSymbol: false,
+  });
   const [errors, setErrors] = useState({});
   const validCode = "12345";
 
@@ -26,8 +33,40 @@ export function PassRecover() {
       newErrors.email = "Email inválido!";
     }
 
+    if (step === 3) {
+      if (!formPasswordsValues.password.trim()) {
+        newErrors.password = "Senha é obrigatória";
+      }
+
+      if (!formPasswordsValues.confirmPassword.trim()) {
+        newErrors.confirmPassword = "Confirmação de senha é obrigatória";
+      }
+
+      if (
+        formPasswordsValues.password.trim() !==
+        formPasswordsValues.confirmPassword.trim()
+      ) {
+        newErrors.confirmPassword = "As senhas não coincidem";
+      }
+    }
+
     setErrors(newErrors);
-    return !newErrors.email;
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const validatePasswordStrength = (password) => {
+    return {
+      minLength: password.length >= 8,
+      hasUpperCase: /[A-Z]/.test(password),
+      hasLowerCase: /[a-z]/.test(password),
+      hasNumber: /[0-9]/.test(password),
+      hasSymbol: /[!@#$%&*]/.test(password),
+    };
+  };
+
+  const handleFocus = (e) => {
+    const { name } = e.target;
+    setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
   const handleEmailSubmit = (e) => {
@@ -62,10 +101,21 @@ export function PassRecover() {
     setTimeout(() => setStep(3), 1000);
   };
 
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setFormPasswordValues((prev) => ({
+      ...prev,
+      password: newPassword,
+    }));
+    setPasswordStrength(validatePasswordStrength(newPassword));
+  };
+
   const handlePasswordSubmit = (e) => {
     e.preventDefault();
-    console.log(formPasswordsValues);
-    setTimeout(() => navigate("/"), 1000);
+    if (validate()) {
+      console.log(formPasswordsValues);
+      setTimeout(() => navigate("/login"), 1000);
+    }
   };
 
   return (
@@ -86,6 +136,7 @@ export function PassRecover() {
                 className={`inputs ${errors.email ? "error" : ""}`}
                 placeholder="Digite seu e-mail"
                 value={email}
+                onFocus={handleFocus}
                 onChange={(e) => setEmail(e.target.value)}
               />
               {errors.email && (
@@ -110,11 +161,12 @@ export function PassRecover() {
                 {code.map((char, index) => (
                   <input
                     id={`code-${index}`}
+                    name="code"
                     key={index}
                     type="text"
                     maxLength="1"
                     className={`inputs ${errors.code ? "error" : ""}`}
-                    required
+                    onFocus={handleFocus}
                     value={char}
                     onChange={(e) => handleCodeChange(index, e.target.value)}
                   />
@@ -140,20 +192,17 @@ export function PassRecover() {
       {step === 3 && (
         <div className="caixaprincipal">
           <h1 className="titulo">Cadastrar Nova Senha</h1>
-          <form onSubmit={handlePasswordSubmit}>
+          <form onSubmit={handlePasswordSubmit} className="step-3">
             <InputPassword
               label="Nova senha"
               name="newpassword"
               value={formPasswordsValues.password}
-              onChange={(e) =>
-                setFormPasswordValues((prev) => ({
-                  ...prev,
-                  password: e.target.value,
-                }))
-              }
+              onChange={handlePasswordChange}
+              onFocus={handleFocus}
+              error={errors.password}
               labelClassName="label"
               inputClassName="inputs"
-              errorClassName="error-message"
+              errorClassName="error-text"
               toggleButtonClassName="toggle-button"
             />
 
@@ -167,29 +216,55 @@ export function PassRecover() {
                   confirmPassword: e.target.value,
                 }))
               }
+              onFocus={handleFocus}
+              error={errors.confirmPassword}
               labelClassName="label"
               inputClassName="inputs"
-              errorClassName="error-message"
+              errorClassName="error-text"
               toggleButtonClassName="toggle-button"
             />
 
             <div className="requirements">
               A senha precisa ter:
               <ul>
-                <li>Mínimo de 8 caracteres.</li>
-                <li>Pelo menos 1 letra maiúscula.</li>
-                <li>Pelo menos 1 letra minúscula.</li>
-                <li>Pelo menos 1 número.</li>
-                <li>Pelo menos 1 símbolo (!@#$%&*).</li>
+                <li
+                  className={passwordStrength.minLength ? "valid" : "invalid"}
+                >
+                  Mínimo de 8 caracteres.
+                </li>
+                <li
+                  className={
+                    passwordStrength.hasUpperCase ? "valid" : "invalid"
+                  }
+                >
+                  Pelo menos 1 letra maiúscula.
+                </li>
+                <li
+                  className={
+                    passwordStrength.hasLowerCase ? "valid" : "invalid"
+                  }
+                >
+                  Pelo menos 1 letra minúscula.
+                </li>
+                <li
+                  className={passwordStrength.hasNumber ? "valid" : "invalid"}
+                >
+                  Pelo menos 1 número.
+                </li>
+                <li
+                  className={passwordStrength.hasSymbol ? "valid" : "invalid"}
+                >
+                  Pelo menos 1 símbolo (!@#$%&*).
+                </li>
               </ul>
             </div>
 
             <div className="button-group">
-              <button type="button" className="cancelar">
-                <strong>Cancelar</strong>
-              </button>
               <button type="submit" className="botaozul">
                 Salvar
+              </button>
+              <button type="button" className="cancelar">
+                <strong>Cancelar</strong>
               </button>
             </div>
           </form>

@@ -61,7 +61,8 @@
 }
 
 .code-inputs input {
-  width: 7%;
+  width: 100%;
+  max-width: 50px;
   text-align: center;
 }
 .botaozul {
@@ -73,9 +74,10 @@
   cursor: pointer;
   width: 100%;
   max-width: 250px;
-  margin-top: 32px;
+  margin-top: 24px;
 }
-.botaozul:hover {
+.botaozul:hover,
+.cancelar:hover {
   transform: scale(1.01);
 }
 
@@ -89,39 +91,42 @@ a {
   cursor: pointer;
 }
 .cancelar {
-  background-color: #f8f7f2;
   border: 1px solid #687dac;
   border-radius: 4px;
   padding: 10px;
-  color: black;
+  color: #000;
   cursor: pointer;
   width: 200px;
-  margin: 10px;
-}
-
-.cancelar:hover {
-  background-color: white;
+  margin-top: 24px;
 }
 
 .requirements {
-  margin-left: 10%;
   text-align: left;
   font-size: 0.9em;
-  margin-bottom: 0px;
+  font-weight: bold;
+  font-size: 16px;
 }
+
+.requirements ul {
+  margin-left: 16px;
+  font-weight: normal;
+}
+
 .button-group {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
 }
 .button-group button {
-  width: 200px;
+  width: 100%;
+  max-width: 250px;
   padding: 10px;
-  margin: 10px;
 }
 
 .label small {
   color: red;
+  font-size: 1rem;
 }
 
 .paragrafo {
@@ -135,6 +140,22 @@ a {
   gap: 4px;
   margin-top: 16px;
 }
+
+.step-3 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.valid {
+  color: green;
+}
+
+.invalid {
+  color: red;
+}
+
 @media (max-width: 620px) {
   .containerpasswordrecover {
     padding: 1rem;
@@ -142,5 +163,13 @@ a {
 
   .caixaprincipal {
     width: auto;
+  }
+  .footer,
+  .button-group {
+    flex-direction: column;
+  }
+
+  .cancelar {
+    margin-top: 0;
   }
 }
