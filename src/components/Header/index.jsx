@@ -7,7 +7,7 @@ import {
   UserRoundCog,
 } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { MOCK_USERS } from "../../utils/constants";
 import { getFirstAndSecondName } from "../../utils/getFirstAndSecondName";
 import { getLink } from "../../utils/getLink";
