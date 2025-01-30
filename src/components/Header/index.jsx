@@ -7,10 +7,16 @@ import {
   UserRoundCog,
 } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router";
+import { MOCK_USERS } from "../../utils/constants";
+import { getFirstAndSecondName } from "../../utils/getFirstAndSecondName";
+import { getLink } from "../../utils/getLink";
+
 import "./styles.css";
 
 export const Header = () => {
   const [activePage, setActivePage] = useState("/");
+  const loggedUser = MOCK_USERS[0];
 
   const sidebarItems = [
     {
@@ -50,9 +56,9 @@ export const Header = () => {
       </a>
       <nav className="menu">
         {menuItems.map(({ label, href }) => (
-          <a key={href} href={href} className="menu-item">
+          <Link to={href} className="menu-item">
             {label}
-          </a>
+          </Link>
         ))}
       </nav>
       <nav className="icon-container">
@@ -66,12 +72,17 @@ export const Header = () => {
         ))}
       </nav>
       <div className="profile-container">
-        <a href="/profile" className="profile-info">
-          <div className="avatar" style={{ width: "50px", height: "50px" }}>
-            <img src="https://placehold.co/50x50" alt="Usuário" />
+        <Link
+          to={getLink(loggedUser.tipoUsuario, loggedUser.id)}
+          className="profile-info"
+        >
+          <div className="avatar">
+            <img src={loggedUser.foto} alt="Usuário" />
           </div>
-          <span className="user-name">Jonh Doe</span>
-        </a>
+          <span className="user-name">
+            {getFirstAndSecondName(loggedUser.nome)}
+          </span>
+        </Link>
         <button className="logout-button">
           <LogOut color="#687dac" size={32} />
         </button>
