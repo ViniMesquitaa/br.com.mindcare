@@ -1,0 +1,8 @@
+.password-container {
+  position: relative;
+}
+
+.toggle-button .toggle-icon {
+  height: 1.3rem;
+  width: 1.3rem;
+}

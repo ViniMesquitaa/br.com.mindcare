@@ -20,12 +20,14 @@
 }
 
 .form {
-  max-width: var(--max-width);
   width: 100%;
-  background-color: var(--color-bg);
   padding: var(--padding);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.form-section {
   display: flex;
   flex-direction: column;
   gap: var(--gap);
@@ -79,6 +81,15 @@
 
 .input-group {
   position: relative;
+  width: 100%;
+}
+
+.input-group .input-label {
+  color: #000;
+}
+
+.input-group .input-label small {
+  color: var(--color-error);
 }
 
 .input-field {
@@ -87,14 +98,6 @@
   margin-top: 0.25rem;
   border-radius: var(--border-radius-small);
   border: 1px solid var(--color-bg-alt);
-}
-
-.input-group label {
-  color: #000;
-}
-
-.input-group label small {
-  color: var(--color-error);
 }
 
 .input-field.error {
@@ -109,16 +112,6 @@
   font-size: var(--font-size-small);
 }
 
-.wrapper {
-  gap: 1rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.password-container {
-  position: relative;
-}
-
 .toggle-button {
   position: absolute;
   display: flex;
@@ -127,10 +120,10 @@
   top: 0.938rem;
 }
 
-.toggle-button .toggle-icon {
-  height: 1.3rem;
-  width: 1.3rem;
-  color: var(--color-accent);
+.input-row {
+  gap: 1rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .submit-button {
@@ -140,12 +133,12 @@
   border: none;
   border-radius: var(--border-radius-small);
   cursor: pointer;
-  margin-top: 0.5rem;
 }
 
 .submit-button:hover {
   background-color: var(--color-primary-hover);
 }
+
 @media (max-width: 425px) {
   .form {
     padding: var(--padding-large);
@@ -161,7 +154,7 @@
     color: var(--color-primary);
   }
 
-  .wrapper {
+  .input-row {
     display: flex;
     flex-direction: column;
     gap: var(--gap);

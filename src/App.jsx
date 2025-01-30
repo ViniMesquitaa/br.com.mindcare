@@ -9,11 +9,16 @@ import AdminPage from "./pages/admin";
 import PatientPage from "./pages/patients";
 import ProfessionalPage from "./pages/professionals";
 import AdminHomePage from "./pages/admin-home";
+import { AdminProfile } from "./pages/AdminProfile";
 
 function App() {
   const location = useLocation();
   const pathname = location.pathname;
-  const showHeader = pathname !== "/login" && pathname !== "/register";
+  const showHeader =
+    pathname !== "/login" &&
+    pathname !== "/register" &&
+    pathname !== "/recoverpassword";
+
   return (
     <>
       {showHeader && <Header />}
@@ -25,6 +30,8 @@ function App() {
         <Route path="/admin/register" element={<RegisterAdmin />} />
         <Route path="/patient" element={<PatientPage />} />
         <Route path="/professional" element={<ProfessionalPage />} />
+        <Route path="/recoverpassword" element={<PassRecover />} />
+        <Route path="/admin/profile/:id" element={<AdminProfile />} />
       </Routes>
     </>
   );

@@ -1,161 +1,175 @@
-
-.container {
+.containerpasswordrecover {
   display: flex;
   flex-direction: column;
   gap: 30px;
   align-items: center;
   justify-content: center;
   padding: 3rem;
-  background-image: url('/public/fundo-cadastro-mobile.png');
-  background-size: cover; 
-  background-repeat: no-repeat; 
-  background-position: center; 
+  background-image: url("/fundo-cadastro-mobile.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
 }
 
-.emaildasenha{
+.caixaprincipal {
   max-width: 600px;
   text-align: center;
-  width: 500px;
-  height: 300px;
-  border-radius: 10px 10px 10px 10px;
+  width: 100%;
+  border-radius: 4px;
   background-color: #f8f7f2;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.473);
-
-}
-
-.codigoemail {
-  max-width: 600px;
-  text-align: center;
-  width: 500px;
-  height: 300px;
-  top: 325px;
-  left: 602px;
-  gap: 0px;
-  border-radius: 10px 10px 10px 10px;
-  background-color: #f8f7f2;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.473);
-  
-}
-
-.novasenha {
-  max-width: 600px;
-  text-align: center;
-  width: 500px;
-  height: 480px;
-  top: 325px;
-  left: 602px;
-  gap: 0px;
-  border-radius: 10px 10px 10px 10px;
-  background-color: #f8f7f2;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.473);
-  
+  box-shadow: 0rem 0rem 0.25rem rgba(0, 0, 0, 0.4);
+  padding: 32px;
 }
 
 .titulo {
-  margin-top: 20px;
   font-size: 1.5em;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-label {
+.label {
   display: block;
   text-align: left;
-  margin-bottom: 5px;
-  margin-left: 52px;
   font-weight: bold;
   font-size: 16px;
 }
 
-input {
-  width: 80%;
-  padding: 8px;
-  margin-bottom: 15px;
+.inputs {
+  width: 100%;
+  padding: 0.5rem;
   border: 1px solid black;
   border-radius: 4px;
+  margin-top: 0.25rem;
 }
+.inputs.error {
+  border-color: #f00;
+}
+
 .code-inputs {
   display: flex;
   justify-content: center;
   gap: 10px;
 }
+.error-code {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  color: #f00;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .code-inputs input {
-  width: 7%;
+  width: 100%;
+  max-width: 50px;
   text-align: center;
 }
-button {
-  background-color: #687DAC;
+.botaozul {
+  background-color: #4267b2;
   color: white;
   padding: 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 200px;
-  margin: 10px;
+  width: 100%;
+  max-width: 250px;
+  margin-top: 24px;
 }
-button:hover {
-  background-color: #365899;
-}
-.link {
-  font-size: 1.0em;
-  color: #4267B2;
-  text-decoration: none;
-}
-.cancelar{
-  background-color: #f8f7f2;
-  border: 1px solid #687DAC;
-  color: black;
+.botaozul:hover,
+.cancelar:hover {
+  transform: scale(1.01);
 }
 
-.cancelar:hover {
-  background-color: white;
+a {
+  text-decoration: none;
 }
-.link:hover {
-  text-decoration: underline;
+
+.link {
+  font-size: 1em;
+  color: #4267b2;
+  cursor: pointer;
 }
+.cancelar {
+  border: 1px solid #687dac;
+  border-radius: 4px;
+  padding: 10px;
+  color: #000;
+  cursor: pointer;
+  width: 200px;
+  margin-top: 24px;
+}
+
 .requirements {
-  margin-left: 10%;
   text-align: left;
   font-size: 0.9em;
-  margin-bottom: 0px;
+  font-weight: bold;
+  font-size: 16px;
 }
+
+.requirements ul {
+  margin-left: 16px;
+  font-weight: normal;
+}
+
 .button-group {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
 }
 .button-group button {
-  width: 200px;
+  width: 100%;
+  max-width: 250px;
   padding: 10px;
-  margin: 10px;
 }
 
-.spanred {
+.label small {
   color: red;
+  font-size: 1rem;
 }
 
 .paragrafo {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 16px;
+}
+
+.step-3 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.valid {
+  color: green;
+}
+
+.invalid {
+  color: red;
 }
 
 @media (max-width: 620px) {
-  .container {
+  .containerpasswordrecover {
     padding: 1rem;
   }
 
-  .emaildasenha {
+  .caixaprincipal {
     width: auto;
-
+  }
+  .footer,
+  .button-group {
+    flex-direction: column;
   }
 
-  .codigoemail {
-    width: auto;
-
+  .cancelar {
+    margin-top: 0;
   }
-
-  .novasenha {
-    width: 400px;
-
-  }
-
-
 }

@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { CircleUserRound, Eye, EyeClosed } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router";
+import { InputPassword } from "../../components/InputPassword";
+import { isValidEmail } from "../../utils/masks";
+
 import "./styleLogin.css";
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({ email: "", password: "" });
 
   const navigate = useNavigate();
-
-  const regexToValidateEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const validateInputs = () => {
     const newErrors = {
@@ -20,7 +21,7 @@ const Login = () => {
     };
     if (!email) {
       newErrors.email = "O Email é obrigatório!";
-    } else if (!regexToValidateEmail.test(email)) {
+    } else if (!isValidEmail(email)) {
       newErrors.email = "Email inválido!";
     }
 
@@ -41,11 +42,12 @@ const Login = () => {
   };
 
   const handleRegister = () => {
-    navigate("/");
+    navigate("/admins/register");
   };
 
-  const handleTogglePassword = () => {
-    setShowPassword((prev) => !prev);
+  const handleFocus = (e) => {
+    const { name } = e.target;
+    setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
   return (
@@ -55,14 +57,13 @@ const Login = () => {
         <form className="form-login" onSubmit={handleLogin} noValidate>
           <div className="input-email">
             <label htmlFor="email" className="label-login">
-              E-mail
-              {errors.email && <span className="required">*</span>}
+              E-mail <small>*</small>
             </label>
             <input
               type="email"
               id="email"
               name="email"
-              className={`input-type ${errors.email ? "input-error" : ""}`}
+              className={`input-type ${errors.email ? "error" : ""}`}
               placeholder="Digite seu e-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -70,32 +71,25 @@ const Login = () => {
             {errors.email && <span className="error-text">{errors.email}</span>}
           </div>
 
-          <div className="password-container">
-            <label htmlFor="password" className="label-login">
-              Senha
-              {errors.password && <span className="required">*</span>}
-            </label>
-            <input
-              type={showPassword ? "text" : "password"}
-              id="password"
-              name="password"
-              className={`input-type ${errors.password ? "input-error" : ""}`}
-              placeholder="Digite sua senha"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {errors.password && (
-              <span className="error-text">{errors.password}</span>
-            )}
-            <i className="eye-icon" onClick={handleTogglePassword}>
-              {showPassword ? <EyeClosed /> : <Eye />}
-            </i>
-          </div>
+          <InputPassword
+            label="Senha"
+            name="password"
+            onFocus={handleFocus}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            error={errors.password}
+            labelClassName="label-login"
+            inputClassName="input-type"
+            errorClassName="error-text"
+            toggleButtonClassName="eye-button"
+          />
+
           <div className="container-esqueceu-senha">
-            <a href="#" className="esqueceu-senha-text">
-              Esqueceu sua senha?
-            </a>
+            <Link to="/">
+              <span className="esqueceu-senha-text">Esqueceu sua senha?</span>
+            </Link>
           </div>
+
           <div className="container-button">
             <button type="submit" className="button-login">
               Entrar
