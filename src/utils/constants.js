@@ -1,4 +1,4 @@
-export const userTypes = {
+export const USER_TYPES = {
   admin: [
     {
       id: 1,
