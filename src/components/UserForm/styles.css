@@ -20,12 +20,8 @@
 }
 
 .form {
-  max-width: var(--max-width);
   width: 100%;
-  background-color: var(--color-bg);
   padding: var(--padding);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: column;
   gap: var(--gap);

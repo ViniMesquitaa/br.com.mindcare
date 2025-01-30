@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./styles.css";
 
-export default function Tabs({ tabs }) {
+export function Tabs({ tabs }) {
   const [activeTab, setActiveTab] = useState(tabs[0]?.name || "");
 
   return (
