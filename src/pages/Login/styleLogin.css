@@ -240,4 +240,8 @@
   .input-type {
     font-size: 18px;
   }
+
+  .eye-button {
+    top: 1.3rem;
+  }
 }

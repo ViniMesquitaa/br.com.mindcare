@@ -22,7 +22,6 @@
 
 .menu-item {
   text-decoration: none;
-  transition: transform 0.3s, color 0.3s;
 }
 
 .menu-item:hover {
@@ -75,15 +74,6 @@
 
 .logout-button:hover {
   text-decoration: underline;
-}
-
-.menu-item.active::after {
-  content: "";
-  width: 60px;
-  height: 2px;
-  background-color: #1e90ff;
-  display: block;
-  margin-top: 4px;
 }
 
 .icon-container {

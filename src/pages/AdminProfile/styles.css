@@ -21,4 +21,7 @@
   .admin-profile-container {
     padding: 4rem 1rem;
   }
+  .admin-profile-content {
+    padding: 1rem;
+  }
 }

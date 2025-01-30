@@ -5,8 +5,8 @@ export function RegisterAdmin() {
   const onSubmit = (values) => console.log(values);
 
   return (
-    <div className="admin-profile-container">
-      <div className="admin-profile-content">
+    <div className="register-admin-container">
+      <div className="register-admin-content">
         <UserForm onSubmit={onSubmit} isAdminRegister />
       </div>
     </div>
