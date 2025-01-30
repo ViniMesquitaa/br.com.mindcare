@@ -9,7 +9,14 @@ import { PassRecover } from "./pages/PassRecover";
 function App() {
   const location = useLocation();
   const pathname = location.pathname;
+<<<<<<< HEAD
   const showHeader = pathname !== "/login" && pathname !== "/register" && pathname !== "/recoverpassword" && pathname !== "/admins/register";
+=======
+  const showHeader =
+    pathname !== "/login" &&
+    pathname !== "/register" &&
+    pathname !== "/recoverpassword";
+>>>>>>> 2f70fed1ab8a98e1cd5aeb805c5277075109aff6
   return (
     <>
       {showHeader && <Header />}
