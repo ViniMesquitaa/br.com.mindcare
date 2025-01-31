@@ -50,3 +50,9 @@
 .pagination .currentPageButton {
   background-color: #84a29f;
 }
+
+@media (max-width: 429px) {
+  .table-container {
+    overflow-x: auto;
+  }
+}

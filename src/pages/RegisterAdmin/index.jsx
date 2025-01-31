@@ -7,7 +7,7 @@ export function RegisterAdmin() {
   return (
     <div className="register-admin-container">
       <div className="register-admin-content">
-        <UserForm onSubmit={onSubmit} isAdminRegister />
+        <UserForm onSubmit={onSubmit} isAdmin />
       </div>
     </div>
   );

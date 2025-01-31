@@ -17,7 +17,7 @@ import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   const [activePage, setActivePage] = useState("/");
-  const loggedUser = MOCK_USERS[0];
+  const loggedUser = MOCK_USERS[3];
 
   const sidebarItems = [
     {
@@ -65,12 +65,12 @@ export const Header = () => {
       </nav>
       <nav className="icon-container">
         {sidebarItems.map(({ href, icon }) => (
-          <a key={href} href={href}>
+          <Link key={href} href={href}>
             <div className="icon" onClick={() => setActivePage(href)}>
               {icon}
               {activePage === href && <div className="active-line" />}
             </div>
-          </a>
+          </Link>
         ))}
       </nav>
       <div className="profile-container">

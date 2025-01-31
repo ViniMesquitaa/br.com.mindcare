@@ -35,6 +35,11 @@ select {
   font: inherit;
 }
 
+input:focus {
+  border: 1.7px solid #84a29f;
+  outline: none;
+}
+
 a {
   text-decoration: none;
   color: inherit;

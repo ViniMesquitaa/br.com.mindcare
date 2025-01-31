@@ -28,10 +28,6 @@
   font-weight: bold;
 }
 
-.tab-content {
-  padding: 20px;
-}
-
 .tab-pane {
   display: flex;
   flex-direction: column;
