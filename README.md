@@ -56,3 +56,14 @@ Certifique-se de ter:
    npm run dev #ou
    pnpm dev
    ```
+
+## Responsabilidades no Projeto
+
+**Pedro Lucas:**
+Fiquei responsável pela criação do protótipo no Figma, elaboração da documentação estruturada por páginas, realização de _pair programming_ e _code reviews_.
+
+- **Componentes:** `Header`, `InputPassword`, `Table`, `ToolTip`, `UseForm`
+- **Hooks:** `useDebounce`
+- **Páginas:** `AdminProfile`, `PacientProfile`, `ProfessionalProfile`, `RegisterAdmin`, `SearchPatients`, `SearchProfessionals`
+- **Utils:** Todos
+- **Serviço:** `addressService.js` para busca de endereço via CEP
