@@ -11,6 +11,7 @@ import { PassRecover } from "./pages/PassRecover";
 import PatientPage from "./pages/patients";
 import ProfessionalPage from "./pages/professionals";
 import { RegisterAdmin } from "./pages/RegisterAdmin";
+import { ProfessionalProfile } from "./pages/ProfessionalProfile";
 
 function App() {
   const location = useLocation();
@@ -24,16 +25,17 @@ function App() {
     <>
       {showHeader && <Header />}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/admin/register" element={<RegisterAdmin />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/recoverpassword" element={<PassRecover />} />
+        <Route path="/" element={<Home />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin/register" element={<RegisterAdmin />} />
         <Route path="/adminhome" element={<AdminHomePage />} />
         <Route path="/admin/register" element={<RegisterAdmin />} />
         <Route path="/pacient" element={<PatientPage />} />
         <Route path="/pacient/:id" element={<PacientProfile />} />
         <Route path="/professional" element={<ProfessionalPage />} />
-        <Route path="/recoverpassword" element={<PassRecover />} />
+        <Route path="/professional/:id" element={<ProfessionalProfile />} />
         <Route path="/admin/:id" element={<AdminProfile />} />
       </Routes>
     </>

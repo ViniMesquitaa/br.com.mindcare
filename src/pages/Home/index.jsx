@@ -2,7 +2,7 @@ import { MOCK_USERS } from "../../utils/constants";
 import { SearchPatients } from "../SearchPatients";
 import { SearchProfessionals } from "../SearchProfessionals";
 
-const loggedUser = MOCK_USERS[2];
+const loggedUser = MOCK_USERS[3];
 const Home = () => {
   return (
     <>

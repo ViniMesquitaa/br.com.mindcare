@@ -7,7 +7,7 @@ import { generateDate } from "../../utils/generateBirthDate";
 
 import "./styles.css";
 
-const loggedUser = MOCK_USERS[4];
+const loggedUser = MOCK_USERS[3];
 
 export function SearchPatients() {
   const navigate = useNavigate();

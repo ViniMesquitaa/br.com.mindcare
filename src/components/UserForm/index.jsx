@@ -52,7 +52,7 @@ export function UserForm({ isAdmin, defaultValues, onSubmit }) {
   );
 
   const { id: urlUserId } = useParams();
-  const loggedUser = MOCK_USERS[3];
+  const loggedUser = MOCK_USERS[2];
   const isUserLogged = urlUserId === loggedUser.id;
   const isEditing = Boolean(defaultValues);
   const isActive = defaultValues?.status === "1";
