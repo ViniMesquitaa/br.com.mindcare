@@ -68,6 +68,7 @@ Fiquei responsável pela criação do protótipo no Figma, elaboração da docum
 - **Utils:** Todos
 - **Serviço:** `addressService.js` para busca de endereço via CEP
 
+
 - **Marcos Vinícius:**
 Fiquei responsável pela criação da tela de login e de redefinição de senha.
 
