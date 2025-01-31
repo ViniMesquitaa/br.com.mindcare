@@ -12,6 +12,7 @@ import PatientPage from "./pages/patients";
 import ProfessionalPage from "./pages/professionals";
 import { RegisterAdmin } from "./pages/RegisterAdmin";
 import { ProfessionalProfile } from "./pages/ProfessionalProfile";
+import { ResetPass } from "./pages/ResetPass";
 
 function App() {
   const location = useLocation();
@@ -37,6 +38,7 @@ function App() {
         <Route path="/professional" element={<ProfessionalPage />} />
         <Route path="/professional/:id" element={<ProfessionalProfile />} />
         <Route path="/admin/:id" element={<AdminProfile />} />
+        <Route path="/resetpassword" element={<ResetPass />} />
       </Routes>
     </>
   );
