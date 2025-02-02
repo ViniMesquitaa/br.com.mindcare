@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { InputPassword } from "../../components/InputPassword";
+import { useSession } from "../../hooks/useSession";
+import { login } from "../../service/http/user";
 import { isValidEmail } from "../../utils/masks";
 
 import "./styleLogin.css";
 
 const Login = () => {
+  const { startSession } = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({ email: "", password: "" });
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -32,10 +37,23 @@ const Login = () => {
     return !newErrors.email && !newErrors.password;
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (validateInputs()) {
+    if (!validateInputs()) return;
+
+    setLoading(true);
+    setErrorMessage("");
+
+    try {
+      const { token, user } = await login({ email, senha: password });
+      startSession({ token, user });
       navigate("/");
+    } catch (error) {
+      setErrorMessage(
+        error.response?.data?.message || "Erro ao tentar fazer login."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -88,9 +106,10 @@ const Login = () => {
             </Link>
           </div>
 
+          {errorMessage && <span className="error-text">{errorMessage}</span>}
           <div className="container-button">
             <button type="submit" className="button-login">
-              Entrar
+              {loading ? "Entrando..." : "Entrar"}
             </button>
             <button
               type="button"

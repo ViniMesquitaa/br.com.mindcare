@@ -2,6 +2,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import "./app.css";
 import { Header } from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
+import { useMockAxios } from "./hooks/useMockAxios";
 import AdminPage from "./pages/admin";
 import AdminHomePage from "./pages/admin-home";
 import { AdminProfile } from "./pages/AdminProfile";
@@ -16,6 +17,7 @@ import { RegisterAdmin } from "./pages/RegisterAdmin";
 import { ResetPass } from "./pages/ResetPass";
 
 function App() {
+  useMockAxios();
   const location = useLocation();
   const pathname = location.pathname;
   const showHeader =

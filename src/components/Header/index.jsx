@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { MOCK_USERS } from "../../config/constants";
+import { useSession } from "../../hooks/useSession";
 import { getFirstAndSecondName } from "../../utils/getFirstAndSecondName";
 import { getLink } from "../../utils/getLink";
 
@@ -16,7 +16,7 @@ import "./styles.css";
 
 export const Header = () => {
   const [activePage, setActivePage] = useState("/");
-  const loggedUser = MOCK_USERS[3];
+  const { session, removeSession } = useSession();
 
   const sidebarItems = [
     {
@@ -74,17 +74,17 @@ export const Header = () => {
       </nav>
       <div className="profile-container">
         <Link
-          to={getLink(loggedUser.tipoUsuario, loggedUser.id)}
+          to={getLink(session?.user?.tipoUsuario, session?.user?.id)}
           className="profile-info"
         >
           <div className="avatar">
-            <img src={loggedUser.foto} alt="Usuário" />
+            <img src={session?.user?.foto} alt="Usuário" />
           </div>
           <span className="user-name">
-            {getFirstAndSecondName(loggedUser.nome)}
+            {getFirstAndSecondName(session?.user?.nome)}
           </span>
         </Link>
-        <button className="logout-button">
+        <button className="logout-button" onClick={() => removeSession()}>
           <LogOut color="#687dac" size={32} />
         </button>
       </div>

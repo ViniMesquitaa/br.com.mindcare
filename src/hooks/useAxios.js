@@ -2,7 +2,7 @@ import Axios from "axios";
 import { TIME_TO_REDIRECT } from "../config/constants";
 import { ROUTES } from "../config/routes";
 import { authManager } from "../service/authManager";
-import { logout } from "../services/http/user";
+// import { logout } from "../services/http/user";
 
 export const redirect = (path) => {
   setTimeout(() => {
@@ -40,7 +40,7 @@ function createAxiosInstance(defaultBaseURL, withCredentials) {
         if (error?.status === 401) {
           authManager.clear();
           redirect(ROUTES.NOT_PROTECTED.login);
-          await logout();
+          // await logout();
         }
       } catch {}
 

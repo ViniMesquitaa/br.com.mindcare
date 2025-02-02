@@ -1,13 +1,15 @@
-import { MOCK_USERS } from "../../config/constants";
+import { useSession } from "../../hooks/useSession";
 import { SearchPatients } from "../SearchPatients";
 import { SearchProfessionals } from "../SearchProfessionals";
+import AdminPage from "../admin";
 
-const loggedUser = MOCK_USERS[3];
 const Home = () => {
+  const { session } = useSession();
   return (
     <>
-      <div>{loggedUser?.tipoUsuario === "4" && <SearchPatients />}</div>
-      <div>{loggedUser?.tipoUsuario === "3" && <SearchProfessionals />}</div>
+      <div>{session?.user?.tipoUsuario === "1" && <AdminPage />}</div>
+      <div>{session?.user?.tipoUsuario === "4" && <SearchPatients />}</div>
+      <div>{session?.user?.tipoUsuario === "3" && <SearchProfessionals />}</div>
     </>
   );
 };

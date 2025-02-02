@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { SessionContext } from "../context/SessionProvider";
+import { authManager } from "../service/authManager";
 
 export const useSession = () => {
   const payload = useContext(SessionContext);
@@ -10,11 +11,12 @@ export const useSession = () => {
 
   try {
     const { token, user } = authManager.get();
+
     return {
       ...payload,
       user,
       token,
-      isAuth: !!token && !!user,
+      isAuth: token && user,
     };
   } catch (error) {
     console.log(error);
