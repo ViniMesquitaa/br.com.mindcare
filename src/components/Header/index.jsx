@@ -7,13 +7,12 @@ import {
   UserRoundCog,
 } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { MOCK_USERS } from "../../utils/constants";
+import { Link, NavLink } from "react-router-dom";
+import { MOCK_USERS } from "../../config/constants";
 import { getFirstAndSecondName } from "../../utils/getFirstAndSecondName";
 import { getLink } from "../../utils/getLink";
 
 import "./styles.css";
-import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   const [activePage, setActivePage] = useState("/");

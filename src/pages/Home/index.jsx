@@ -1,4 +1,4 @@
-import { MOCK_USERS } from "../../utils/constants";
+import { MOCK_USERS } from "../../config/constants";
 import { SearchPatients } from "../SearchPatients";
 import { SearchProfessionals } from "../SearchProfessionals";
 

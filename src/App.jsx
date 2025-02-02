@@ -1,6 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import "./app.css";
 import { Header } from "./components/Header";
+import PrivateRoute from "./components/PrivateRoute";
 import AdminPage from "./pages/admin";
 import AdminHomePage from "./pages/admin-home";
 import { AdminProfile } from "./pages/AdminProfile";
@@ -9,9 +10,9 @@ import Login from "./pages/Login/login";
 import { PacientProfile } from "./pages/PacientProfile";
 import { PassRecover } from "./pages/PassRecover";
 import PatientPage from "./pages/patients";
+import { ProfessionalProfile } from "./pages/ProfessionalProfile";
 import ProfessionalPage from "./pages/professionals";
 import { RegisterAdmin } from "./pages/RegisterAdmin";
-import { ProfessionalProfile } from "./pages/ProfessionalProfile";
 import { ResetPass } from "./pages/ResetPass";
 
 function App() {
@@ -27,8 +28,15 @@ function App() {
       {showHeader && <Header />}
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
         <Route path="/recoverpassword" element={<PassRecover />} />
-        <Route path="/" element={<Home />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/register" element={<RegisterAdmin />} />
         <Route path="/adminhome" element={<AdminHomePage />} />

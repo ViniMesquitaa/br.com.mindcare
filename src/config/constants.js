@@ -1,3 +1,12 @@
+export const TIME_TO_REDIRECT = 2000;
+
+export const AXIOS_MOCK_ADAPTER_DELAY_RESPONSE = 2000;
+
+export const LOCAL_STORAGE = {
+  TOKEN: "mindcare_token",
+  USER: "mindcare_user",
+};
+
 export const USER_TYPES = {
   admin: [
     {

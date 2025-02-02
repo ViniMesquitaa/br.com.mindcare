@@ -2,7 +2,7 @@ import { Circle, UserRoundSearch } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "../../components/Table";
-import { MOCK_USERS } from "../../utils/constants";
+import { MOCK_USERS } from "../../config/constants";
 import { generateDate } from "../../utils/generateBirthDate";
 
 import "./styles.css";
