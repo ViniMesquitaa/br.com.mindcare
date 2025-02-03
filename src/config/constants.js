@@ -7,6 +7,8 @@ export const LOCAL_STORAGE = {
   USER: "mindcare_user",
 };
 
+export const TOAST_DURATION = 5000;
+
 export const USER_TYPES = {
   admin: [
     {

@@ -15,6 +15,7 @@ import { ProfessionalProfile } from "./pages/ProfessionalProfile";
 import ProfessionalPage from "./pages/professionals";
 import { RegisterAdmin } from "./pages/RegisterAdmin";
 import { ResetPass } from "./pages/ResetPass";
+import { Toast } from "./components/Toast";
 
 function App() {
   useMockAxios();
@@ -50,6 +51,7 @@ function App() {
         <Route path="/admin/:id" element={<AdminProfile />} />
         <Route path="/resetpassword" element={<ResetPass />} />
       </Routes>
+      <Toast />
     </>
   );
 }

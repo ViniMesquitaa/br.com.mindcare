@@ -4,6 +4,7 @@ import { InputPassword } from "../../components/InputPassword";
 import { useSession } from "../../hooks/useSession";
 import { login } from "../../service/http/user";
 import { isValidEmail } from "../../utils/masks";
+import { useToastContext } from "../../context/ToastProvider";
 
 import "./styleLogin.css";
 
@@ -13,7 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({ email: "", password: "" });
-  const [errorMessage, setErrorMessage] = useState("");
+  const { addToast } = useToastContext();
 
   const navigate = useNavigate();
 
@@ -40,18 +41,23 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!validateInputs()) return;
-
     setLoading(true);
-    setErrorMessage("");
-
     try {
       const { token, user } = await login({ email, senha: password });
       startSession({ token, user });
+      addToast({
+        title: "Success",
+        type: "success",
+        description: "Login realizado com sucesso!",
+      });
       navigate("/");
     } catch (error) {
-      setErrorMessage(
-        error.response?.data?.message || "Erro ao tentar fazer login."
-      );
+      addToast({
+        title: "Error",
+        type: "error",
+        description:
+          error.response?.data?.message || "Erro ao tentar fazer login.",
+      });
     } finally {
       setLoading(false);
     }
@@ -106,10 +112,9 @@ const Login = () => {
             </Link>
           </div>
 
-          {errorMessage && <span className="error-text">{errorMessage}</span>}
           <div className="container-button">
-            <button type="submit" className="button-login">
-              {loading ? "Entrando..." : "Entrar"}
+            <button type="submit" className="button-login" disabled={loading}>
+              Entrar
             </button>
             <button
               type="button"

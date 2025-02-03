@@ -4,12 +4,14 @@ import { authManager } from "../service/authManager";
 export const SessionContext = createContext({});
 
 export const SessionProvider = ({ children }) => {
-  const [session, setSession] = useState({});
+  const initialSession = authManager.get();
+
+  const [session, setSession] = useState(initialSession);
 
   const updateSession = useCallback((data) => {
     setSession((prevSession) => {
       const updatedSession = { ...prevSession, ...data };
-      authManager.set(updatedSession);
+      authManager.set(updatedSession.token, updatedSession.user);
       return updatedSession;
     });
   }, []);

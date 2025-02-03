@@ -5,13 +5,21 @@ import AdminPage from "../admin";
 
 const Home = () => {
   const { session } = useSession();
-  return (
-    <>
-      <div>{session?.user?.tipoUsuario === "1" && <AdminPage />}</div>
-      <div>{session?.user?.tipoUsuario === "4" && <SearchPatients />}</div>
-      <div>{session?.user?.tipoUsuario === "3" && <SearchProfessionals />}</div>
-    </>
-  );
+  const { tipoUsuario } = session?.user || {};
+
+  if (tipoUsuario === "1" || tipoUsuario === "2") {
+    return <AdminPage />;
+  }
+
+  if (tipoUsuario === "4") {
+    return <SearchPatients />;
+  }
+
+  if (tipoUsuario === "3") {
+    return <SearchProfessionals />;
+  }
+
+  return null;
 };
 
 export default Home;
