@@ -1,8 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import {
-  REQUEST_ERROR_GENERIC_MESSAGE,
-  TOAST_DURATION,
-} from "../config/constants";
+import { TOAST_DURATION } from "../config/constants";
 
 const ToastContext = createContext();
 

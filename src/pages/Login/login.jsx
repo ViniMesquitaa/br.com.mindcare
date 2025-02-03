@@ -15,7 +15,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({ email: "", password: "" });
   const { addToast } = useToastContext();
-
   const navigate = useNavigate();
 
   const validateInputs = () => {

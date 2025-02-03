@@ -2,9 +2,10 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import "./app.css";
 import { Header } from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
+import { Toast } from "./components/Toast";
 import { useMockAxios } from "./hooks/useMockAxios";
-import AdminPage from "./pages/admin";
 import AdminHomePage from "./pages/admin-home";
+import AdminPage from "./pages/AdminPage";
 import { AdminProfile } from "./pages/AdminProfile";
 import Home from "./pages/Home";
 import Login from "./pages/Login/login";
@@ -15,7 +16,6 @@ import { ProfessionalProfile } from "./pages/ProfessionalProfile";
 import ProfessionalPage from "./pages/professionals";
 import { RegisterAdmin } from "./pages/RegisterAdmin";
 import { ResetPass } from "./pages/ResetPass";
-import { Toast } from "./components/Toast";
 
 function App() {
   useMockAxios();

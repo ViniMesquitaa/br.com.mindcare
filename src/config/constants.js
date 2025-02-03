@@ -9,7 +9,7 @@ export const LOCAL_STORAGE = {
 
 export const TOAST_DURATION = 5000;
 
-export const USER_TYPES = {
+export const USER_TYPES_OPTIONS = {
   admin: [
     {
       id: 1,
@@ -34,6 +34,13 @@ export const USER_TYPES = {
       value: "PROFESSIONAL",
     },
   ],
+};
+
+export const USER_TYPES = {
+  ADMIN_MASTER: "1",
+  ADMIN: "2",
+  PATIENT: "3",
+  PROFESSIONAL: "4",
 };
 
 export const MOCK_USERS = [

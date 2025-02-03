@@ -1,7 +1,7 @@
 import { useSession } from "../../hooks/useSession";
 import { SearchPatients } from "../SearchPatients";
 import { SearchProfessionals } from "../SearchProfessionals";
-import AdminPage from "../admin";
+import AdminPage from "../AdminPage";
 
 const Home = () => {
   const { session } = useSession();
