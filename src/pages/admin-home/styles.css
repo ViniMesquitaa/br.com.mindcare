@@ -1,7 +1,7 @@
 .admin-home-container {
-  max-width: 1700px;
   margin: auto;
   padding: 80px;
+  max-width: 1700px;
 }
 
 .admin-home-title {
@@ -22,9 +22,8 @@
 
 .admin-home-table {
   display: flex;
+  border-radius: 10px;
   flex-direction: column;
-  padding: 15px 0;
-  border: 1px solid #dddddd;
-  border-radius: 15px;
-  box-shadow: 5px 5px 5px lightgray;
+  background-color: #f8f7f2;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.2);
 }

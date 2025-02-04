@@ -92,7 +92,13 @@ export default function AdminPage() {
             {data?.status?.description}
           </span>
         ),
-        details: <UserRoundSearch className="search-professionals-details" />,
+        details: (
+          <div
+            style={{ display: "flex", justifyContent: "center", width: "100%" }}
+          >
+            <UserRoundSearch className="search-pacient-details" />
+          </div>
+        ),
       })) || [];
 
     const PATIENT_ROWS =
@@ -115,7 +121,13 @@ export default function AdminPage() {
             {data?.status?.description}
           </span>
         ),
-        details: <UserRoundSearch className="search-pacient-details" />,
+        details: (
+          <div
+            style={{ display: "flex", justifyContent: "center", width: "100%" }}
+          >
+            <UserRoundSearch className="search-pacient-details" />
+          </div>
+        ),
       })) || [];
 
     return [PROFESSIONAL_ROWS, PATIENT_ROWS];

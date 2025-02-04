@@ -22,10 +22,7 @@ function App() {
   useMockAxios();
   const location = useLocation();
   const pathname = location.pathname;
-  const showHeader =
-    pathname !== ROUTES.NOT_PROTECTED.login &&
-    pathname !== "/register" &&
-    pathname !== "/recoverpassword";
+  const showHeader = !Object.values(ROUTES.NOT_PROTECTED).includes(pathname);
 
   return (
     <>
@@ -40,10 +37,16 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path={ROUTES.PROTECTED.admins}
+          element={
+            <PrivateRoute>
+              <AdminHomePage />
+            </PrivateRoute>
+          }
+        />
         <Route path="/recoverpassword" element={<PassRecover />} />
-        <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/register" element={<RegisterAdmin />} />
-        <Route path="/adminhome" element={<AdminHomePage />} />
         <Route path="/admin/register" element={<RegisterAdmin />} />
         <Route path="/pacient" element={<PatientPage />} />
         <Route path="/pacient/:id" element={<PacientProfile />} />

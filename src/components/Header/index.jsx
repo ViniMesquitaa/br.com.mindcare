@@ -14,6 +14,7 @@ import { getLink } from "../../utils/getLink";
 
 import "./styles.css";
 import { USER_TYPES } from "../../config/constants";
+import { ROUTES } from "../../config/routes";
 
 export const Header = () => {
   const [activePage, setActivePage] = useState("/");
@@ -23,7 +24,7 @@ export const Header = () => {
     session?.user?.tipoUsuario === USER_TYPES?.ADMIN_MASTER && {
       icon: <UserRoundCog color="#687dac" size={32} />,
       label: "Administradores",
-      href: "/admin",
+      href: ROUTES.PROTECTED.admins,
     },
     {
       icon: <Stethoscope color="#687dac" size={32} />,
@@ -44,10 +45,10 @@ export const Header = () => {
   ];
 
   const menuItems = [
-    { label: "Home", href: "/" },
+    { label: "Home", href: ROUTES.PROTECTED.home },
     session?.user?.tipoUsuario === USER_TYPES?.ADMIN_MASTER && {
       label: "Administradores",
-      href: "/admin",
+      href: ROUTES.PROTECTED.admins,
     },
     { label: "Profissionais", href: "/professional" },
     { label: "Pacientes", href: "/patient" },
