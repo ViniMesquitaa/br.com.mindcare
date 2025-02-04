@@ -3,6 +3,7 @@ import "./app.css";
 import { Header } from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
 import { Toast } from "./components/Toast";
+import { ROUTES } from "./config/routes";
 import { useMockAxios } from "./hooks/useMockAxios";
 import AdminHomePage from "./pages/admin-home";
 import AdminPage from "./pages/AdminPage";
@@ -22,7 +23,7 @@ function App() {
   const location = useLocation();
   const pathname = location.pathname;
   const showHeader =
-    pathname !== "/login" &&
+    pathname !== ROUTES.NOT_PROTECTED.login &&
     pathname !== "/register" &&
     pathname !== "/recoverpassword";
 
@@ -30,9 +31,9 @@ function App() {
     <>
       {showHeader && <Header />}
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path={ROUTES.NOT_PROTECTED.login} element={<Login />} />
         <Route
-          path="/"
+          path={ROUTES.PROTECTED.home}
           element={
             <PrivateRoute>
               <Home />

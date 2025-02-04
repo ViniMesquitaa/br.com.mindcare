@@ -39,26 +39,27 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (!validateInputs()) return;
-    setLoading(true);
-    try {
-      const { token, user } = await login({ email, senha: password });
-      startSession({ token, user });
-      addToast({
-        title: "Success",
-        type: "success",
-        description: "Login realizado com sucesso!",
-      });
-      navigate("/");
-    } catch (error) {
-      addToast({
-        title: "Error",
-        type: "error",
-        description:
-          error.response?.data?.message || "Erro ao tentar fazer login.",
-      });
-    } finally {
-      setLoading(false);
+    if (validateInputs()) {
+      setLoading(true);
+      try {
+        const { token, user } = await login({ email, senha: password });
+        startSession({ token, user });
+        addToast({
+          title: "Success",
+          type: "success",
+          description: "Login realizado com sucesso!",
+        });
+        navigate("/");
+      } catch (error) {
+        addToast({
+          title: "Error",
+          type: "error",
+          description:
+            error.response?.data?.message || "Erro ao tentar fazer login.",
+        });
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -112,7 +113,7 @@ const Login = () => {
           </div>
 
           <div className="container-button">
-            <button type="submit" className="button-login" disabled={loading}>
+            <button type="submit" className="button-login">
               Entrar
             </button>
             <button

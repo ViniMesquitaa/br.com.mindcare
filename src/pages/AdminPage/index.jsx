@@ -1,13 +1,14 @@
-import React, { useEffect, useMemo, useState } from "react";
-import Table from "../../components/Table";
-import { COLUMNS_ADMINISTRADORES, ROWS_ADMINISTRADORES } from "../../data/data";
-import { useSession } from "../../hooks/useSession";
-import { getIndicators } from "../../service/http/admin";
+import { Circle, UserRoundSearch } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { Loading } from "../../components/Loading";
+import Table from "../../components/Table";
+import { useToastContext } from "../../context/ToastProvider";
+import { useSession } from "../../hooks/useSession";
+import { getIndicators, getLatest } from "../../service/http/admin";
+import { getFirstAndSecondName } from "../../utils/getFirstAndSecondName";
 
 import "./styles.css";
-import { useToastContext } from "../../context/ToastProvider";
-import { Link } from "react-router-dom";
 
 export default function AdminPage() {
   const {
@@ -15,6 +16,7 @@ export default function AdminPage() {
   } = useSession();
   const [loading, setLoading] = useState(true);
   const [indicators, setIndicators] = useState([]);
+  const [lastRegisteredUsers, setLastRegisteredUsers] = useState([]);
   const { addToast } = useToastContext();
 
   useEffect(() => {
@@ -32,8 +34,92 @@ export default function AdminPage() {
         setLoading(false);
       }
     };
+
+    const fetchLastRegisteredUsers = async () => {
+      try {
+        const data = await getLatest();
+        setLastRegisteredUsers(data);
+      } catch (error) {
+        addToast({
+          title: "Error",
+          type: "error",
+          description: error.message,
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchIndicators();
-  }, []);
+    fetchLastRegisteredUsers();
+  }, [addToast]);
+
+  const COLUMNS_PROFISSIONAIS = [
+    { name: "id", label: "ID" },
+    { name: "name", label: "Nome" },
+    { name: "specialty", label: "Especialidade" },
+    { name: "quantityFree", label: "Quant. Gratuitas" },
+    { name: "status", label: "Status" },
+    { name: "details", label: "Detalhes" },
+  ];
+
+  const COLUMNS_PATIENTS = [
+    { name: "id", label: "ID" },
+    { name: "name", label: "Nome" },
+    { name: "dateBirth", label: "Data de nascimento" },
+    { name: "medicalRecords", label: "Prontuário" },
+    { name: "status", label: "Status" },
+    { name: "details", label: "Detalhes" },
+  ];
+
+  const [PROFESSIONAL_ROWS, PATIENT_ROWS] = useMemo(() => {
+    const PROFESSIONAL_ROWS =
+      lastRegisteredUsers?.professionals?.map((data) => ({
+        id: data?.id,
+        name: getFirstAndSecondName(data?.name),
+        specialty: data?.specialty,
+        quantityFree: data?.quantityFree,
+        status: (
+          <span
+            className={`search-pacient-status ${
+              data?.status?.description === "Aprovado" ? "active" : "inactive"
+            }`}
+          >
+            <Circle
+              strokeWidth={0}
+              fill={data?.status?.description === "Aprovado" ? "green" : "red"}
+              size="10"
+            />
+            {data?.status?.description}
+          </span>
+        ),
+        details: <UserRoundSearch className="search-professionals-details" />,
+      })) || [];
+
+    const PATIENT_ROWS =
+      lastRegisteredUsers?.patients?.map((data) => ({
+        id: data?.id,
+        name: getFirstAndSecondName(data?.name),
+        dateBirth: data?.dateOfBirth,
+        medicalRecords: data?.medicalRecord,
+        status: (
+          <span
+            className={`search-pacient-status ${
+              data?.status?.description === "Ativo" ? "active" : "inactive"
+            }`}
+          >
+            <Circle
+              strokeWidth={0}
+              fill={data?.status?.description === "Ativo" ? "green" : "red"}
+              size="10"
+            />
+            {data?.status?.description}
+          </span>
+        ),
+        details: <UserRoundSearch className="search-pacient-details" />,
+      })) || [];
+
+    return [PROFESSIONAL_ROWS, PATIENT_ROWS];
+  }, [lastRegisteredUsers, getFirstAndSecondName]);
 
   return (
     <>
@@ -68,8 +154,8 @@ export default function AdminPage() {
                   </Link>
                 </div>
                 <Table
-                  columns={COLUMNS_ADMINISTRADORES}
-                  rows={ROWS_ADMINISTRADORES}
+                  columns={COLUMNS_PROFISSIONAIS}
+                  rows={PROFESSIONAL_ROWS}
                 />
               </section>
 
@@ -83,10 +169,7 @@ export default function AdminPage() {
                     <span className="see-more">Ver mais</span>
                   </Link>
                 </div>
-                <Table
-                  columns={COLUMNS_ADMINISTRADORES}
-                  rows={ROWS_ADMINISTRADORES}
-                />
+                <Table columns={COLUMNS_PATIENTS} rows={PATIENT_ROWS} />
               </section>
             </section>
           </section>
