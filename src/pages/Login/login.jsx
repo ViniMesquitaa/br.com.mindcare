@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { InputPassword } from "../../components/InputPassword";
+import { useSession } from "../../hooks/useSession";
+import { login } from "../../service/http/user";
 import { isValidEmail } from "../../utils/masks";
+import { useToastContext } from "../../context/ToastProvider";
 
 import "./styleLogin.css";
 
 const Login = () => {
+  const { startSession } = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({ email: "", password: "" });
-
+  const { addToast } = useToastContext();
   const navigate = useNavigate();
 
   const validateInputs = () => {
@@ -32,10 +37,29 @@ const Login = () => {
     return !newErrors.email && !newErrors.password;
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     if (validateInputs()) {
-      navigate("/");
+      setLoading(true);
+      try {
+        const { token, user } = await login({ email, senha: password });
+        startSession({ token, user });
+        addToast({
+          title: "Success",
+          type: "success",
+          description: "Login realizado com sucesso!",
+        });
+        navigate("/");
+      } catch (error) {
+        addToast({
+          title: "Error",
+          type: "error",
+          description:
+            error.response?.data?.message || "Erro ao tentar fazer login.",
+        });
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -89,7 +113,7 @@ const Login = () => {
           </div>
 
           <div className="container-button">
-            <button type="submit" className="button-login">
+            <button type="submit" className="button-login" disabled={loading}>
               Entrar
             </button>
             <button

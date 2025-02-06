@@ -1,7 +1,7 @@
 import { Check, Circle, ClockAlert, ClipboardPlus } from "lucide-react";
 import { Tabs } from "../../components/Tabs";
 import { UserForm } from "../../components/UserForm";
-import { DEFAULT_VALUES, MOCK_USERS } from "../../utils/constants";
+import { DEFAULT_VALUES, MOCK_USERS } from "../../config/constants";
 import { generateDate } from "../../utils/generateBirthDate";
 
 import { useMemo, useState } from "react";

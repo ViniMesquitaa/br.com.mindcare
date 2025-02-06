@@ -1,15 +1,25 @@
-import { MOCK_USERS } from "../../utils/constants";
+import { useSession } from "../../hooks/useSession";
 import { SearchPatients } from "../SearchPatients";
 import { SearchProfessionals } from "../SearchProfessionals";
+import AdminPage from "../AdminPage";
 
-const loggedUser = MOCK_USERS[3];
 const Home = () => {
-  return (
-    <>
-      <div>{loggedUser?.tipoUsuario === "4" && <SearchPatients />}</div>
-      <div>{loggedUser?.tipoUsuario === "3" && <SearchProfessionals />}</div>
-    </>
-  );
+  const { session } = useSession();
+  const { tipoUsuario } = session?.user || {};
+
+  if (tipoUsuario === "1" || tipoUsuario === "2") {
+    return <AdminPage />;
+  }
+
+  if (tipoUsuario === "4") {
+    return <SearchPatients />;
+  }
+
+  if (tipoUsuario === "3") {
+    return <SearchProfessionals />;
+  }
+
+  return null;
 };
 
 export default Home;

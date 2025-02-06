@@ -7,23 +7,24 @@ import {
   UserRoundCog,
 } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { MOCK_USERS } from "../../utils/constants";
+import { Link, NavLink } from "react-router-dom";
+import { useSession } from "../../hooks/useSession";
 import { getFirstAndSecondName } from "../../utils/getFirstAndSecondName";
 import { getLink } from "../../utils/getLink";
 
 import "./styles.css";
-import { NavLink } from "react-router-dom";
+import { USER_TYPES } from "../../config/constants";
+import { ROUTES } from "../../config/routes";
 
 export const Header = () => {
   const [activePage, setActivePage] = useState("/");
-  const loggedUser = MOCK_USERS[3];
+  const { session, removeSession } = useSession();
 
   const sidebarItems = [
-    {
+    session?.user?.tipoUsuario === USER_TYPES?.ADMIN_MASTER && {
       icon: <UserRoundCog color="#687dac" size={32} />,
       label: "Administradores",
-      href: "/admin",
+      href: ROUTES.PROTECTED.admins,
     },
     {
       icon: <Stethoscope color="#687dac" size={32} />,
@@ -44,50 +45,62 @@ export const Header = () => {
   ];
 
   const menuItems = [
-    { label: "Home", href: "/" },
-    { label: "AdminHome", href: "/adminhome" },
-    { label: "Administradores", href: "/admin" },
+    { label: "Home", href: ROUTES.PROTECTED.home },
+    session?.user?.tipoUsuario === USER_TYPES?.ADMIN_MASTER && {
+      label: "Administradores",
+      href: ROUTES.PROTECTED.admins,
+    },
     { label: "Profissionais", href: "/professional" },
     { label: "Pacientes", href: "/patient" },
   ];
 
   return (
     <header className="header-container">
-      <a href="/" className="logo">
-        <img src="/Logo.png" alt="Logo" />
-      </a>
-      <nav className="menu">
-        {menuItems.map(({ label, href }) => (
-          <NavLink key={href} to={href} className="menu-item">
-            {label}
-          </NavLink>
-        ))}
-      </nav>
-      <nav className="icon-container">
-        {sidebarItems.map(({ href, icon }) => (
-          <Link key={href} href={href}>
-            <div className="icon" onClick={() => setActivePage(href)}>
-              {icon}
-              {activePage === href && <div className="active-line" />}
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "1700px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <a href="/" className="logo">
+          <img src="/Logo.png" alt="Logo" />
+        </a>
+        <nav className="menu">
+          {menuItems.map(({ label, href }) => (
+            <NavLink key={href} to={href} className="menu-item">
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+        <nav className="icon-container">
+          {sidebarItems.map(({ href, icon }) => (
+            <Link key={href} href={href}>
+              <div className="icon" onClick={() => setActivePage(href)}>
+                {icon}
+                {activePage === href && <div className="active-line" />}
+              </div>
+            </Link>
+          ))}
+        </nav>
+        <div className="profile-container">
+          <Link
+            to={getLink(session?.user?.tipoUsuario, session?.user?.id)}
+            className="profile-info"
+          >
+            <div className="avatar">
+              <img src={session?.user?.foto} alt="Usuário" />
             </div>
+            <span className="user-name">
+              {getFirstAndSecondName(session?.user?.nome)}
+            </span>
           </Link>
-        ))}
-      </nav>
-      <div className="profile-container">
-        <Link
-          to={getLink(loggedUser.tipoUsuario, loggedUser.id)}
-          className="profile-info"
-        >
-          <div className="avatar">
-            <img src={loggedUser.foto} alt="Usuário" />
-          </div>
-          <span className="user-name">
-            {getFirstAndSecondName(loggedUser.nome)}
-          </span>
-        </Link>
-        <button className="logout-button">
-          <LogOut color="#687dac" size={32} />
-        </button>
+          <button className="logout-button" onClick={() => removeSession()}>
+            <LogOut color="#687dac" size={32} />
+          </button>
+        </div>
       </div>
     </header>
   );

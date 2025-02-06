@@ -1,4 +1,15 @@
-export const USER_TYPES = {
+export const TIME_TO_REDIRECT = 2000;
+
+export const AXIOS_MOCK_ADAPTER_DELAY_RESPONSE = 2000;
+
+export const LOCAL_STORAGE = {
+  TOKEN: "mindcare_token",
+  USER: "mindcare_user",
+};
+
+export const TOAST_DURATION = 5000;
+
+export const USER_TYPES_OPTIONS = {
   admin: [
     {
       id: 1,
@@ -23,6 +34,13 @@ export const USER_TYPES = {
       value: "PROFESSIONAL",
     },
   ],
+};
+
+export const USER_TYPES = {
+  ADMIN_MASTER: "1",
+  ADMIN: "2",
+  PATIENT: "3",
+  PROFESSIONAL: "4",
 };
 
 export const MOCK_USERS = [

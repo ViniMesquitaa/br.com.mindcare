@@ -1,7 +1,7 @@
 import { CircleUserRound } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
-import { MOCK_USERS, USER_TYPES } from "../../utils/constants";
+import { MOCK_USERS, USER_TYPES } from "../../config/constants";
 import { generateRandomPassword } from "../../utils/generateRandomPassword";
 import {
   birthDateMask,

@@ -1,5 +1,5 @@
 import { UserForm } from "../../components/UserForm";
-import { DEFAULT_VALUES } from "../../utils/constants";
+import { DEFAULT_VALUES } from "../../config/constants";
 import "./styles.css";
 
 export function AdminProfile() {

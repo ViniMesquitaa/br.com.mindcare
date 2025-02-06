@@ -1,6 +1,6 @@
 import { Tabs } from "../../components/Tabs";
 import { UserForm } from "../../components/UserForm";
-import { DEFAULT_VALUES } from "../../utils/constants";
+import { DEFAULT_VALUES } from "../../config/constants";
 
 export function ProfessionalProfile() {
   return (
